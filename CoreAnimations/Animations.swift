@@ -30,6 +30,7 @@ struct Animations {
         Properties("backgroundColor", [UIColor.systemRed.cgColor, UIColor.systemYellow.cgColor, UIColor.systemGreen.cgColor]),
         Properties("backgroundFilters", [/*todo*/]),
         Properties("borderColor", [UIColor.systemRed.cgColor, UIColor.systemYellow.cgColor, UIColor.systemGreen.cgColor]),
+        Properties("borderWidth", [10, 3, 10]),
         Properties("transform.scale", [1.0, 1.2, 1.0]),
         Properties("transform.rotation.y", [1.0, 1.5, 1.0]),
         Properties("transform.rotation.x", [1.0, 1.5, 1.0]),

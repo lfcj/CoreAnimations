@@ -100,7 +100,7 @@ private extension ViewController {
         imageView.contentMode = .scaleAspectFit
         imageView.layer.cornerRadius = 10
         imageView.layer.borderWidth = 5
-        imageView.layer.borderColor = view.backgroundColor?.cgColor
+        imageView.layer.borderColor = UIColor.lightGray.cgColor
         return imageView
     }
 
@@ -113,7 +113,7 @@ private extension ViewController {
         button.backgroundColor = .secondarySystemBackground
         button.setTitleColor(.systemGreen, for: .highlighted)
         button.layer.borderWidth = 5
-        button.layer.borderColor = view.backgroundColor?.cgColor
+        button.layer.borderColor = UIColor.lightGray.cgColor
         return button
     }
 }
