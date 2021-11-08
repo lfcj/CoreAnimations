@@ -3,12 +3,20 @@ import UIKit
 final class ViewController: UIViewController {
 
     private let image = #imageLiteral(resourceName: "animation")
+    private let animations = Animations()
+
     private lazy var imageView = makeImageView()
+    private lazy var startAnimationButton = makeButton()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         addViews()
         addConstraints()
+    }
+
+    @objc private func animate() {
+        imageView.layer.removeAllAnimations()
+        imageView.layer.add(animations.makeDepthRotationTransform(), forKey: nil)
     }
 
 }
@@ -19,6 +27,7 @@ private extension ViewController {
 
     func addViews() {
         view.addSubview(imageView)
+        view.addSubview(startAnimationButton)
     }
 
     func addConstraints() {
@@ -27,7 +36,12 @@ private extension ViewController {
             imageView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
             imageView.leadingAnchor.constraint(equalTo: view.readableContentGuide.leadingAnchor, constant: 20),
             imageView.trailingAnchor.constraint(equalTo: view.readableContentGuide.trailingAnchor, constant: -20),
-            imageView.heightAnchor.constraint(equalTo: imageView.widthAnchor)
+            imageView.heightAnchor.constraint(equalTo: imageView.widthAnchor),
+
+            startAnimationButton.leadingAnchor.constraint(equalTo: view.readableContentGuide.leadingAnchor, constant: 20),
+            startAnimationButton.topAnchor.constraint(equalTo: view.readableContentGuide.topAnchor, constant: 10),
+            startAnimationButton.widthAnchor.constraint(equalToConstant: 150),
+            startAnimationButton.heightAnchor.constraint(equalToConstant: 48)
         ])
     }
 
@@ -45,4 +59,12 @@ private extension ViewController {
         return imageView
     }
 
+    func makeButton() -> UIButton {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setTitle("Start animation", for: .normal)
+        button.addTarget(self, action: #selector(animate), for: .touchUpInside)
+        button.setTitleColor(.cyan, for: .normal)
+        return button
+    }
 }
