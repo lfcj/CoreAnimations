@@ -5,26 +5,40 @@ struct Animations {
 
     typealias KeyPath = String
     typealias Values = [Any]
+    typealias KeyTimes = [NSNumber]
 
-    var count: Int { propertiesAndValues.count }
+    struct Properties {
+        let keyPath: KeyPath
+        let values: Values
+        let keyTimes: KeyTimes
+        let duration: CFTimeInterval
+        let repetitions: Float
 
-    private static let keyTimes:  [NSNumber] = [0, 0.5, 1]
-    private static let shortDuration: CFTimeInterval = 0.3
-    private static let repetitions: Float = 5
+        init(_ keyPath: KeyPath, _ values: Values, _ keyTimes: [NSNumber] = [0, 0.5, 1], _ duration: CFTimeInterval = 0.3, _ repetitions: Float = 5) {
+            self.keyPath = keyPath
+            self.values = values
+            self.keyTimes = keyTimes
+            self.duration = duration
+            self.repetitions = repetitions
+        }
+    }
 
-    private let propertiesAndValues: [(keyPath: KeyPath, values: Values)] = [
-        ("anchorPoint", [CGPoint(x: 0, y: 0), CGPoint(x: 0.1, y: 0.1), CGPoint(x: 0, y: 0)]),
-        ("transform.scale", [1.0, 1.2, 1.0]),
-        ("transform.rotation.y", [1.0, 1.5, 1.0]),
-        ("transform.rotation.x", [1.0, 1.5, 1.0]),
-        ("transform.rotation.z", [1.0, 1.5, 1.0]),
+    var count: Int { properties.count }
+
+    private let properties: [Properties] = [
+        Properties("anchorPoint", [CGPoint(x: 0, y: 0), CGPoint(x: 0.1, y: 0.1), CGPoint(x: 0, y: 0)]),
+        Properties("backgroundColor", [UIColor.systemRed.cgColor, UIColor.systemYellow.cgColor, UIColor.systemGreen.cgColor]),
+        Properties("transform.scale", [1.0, 1.2, 1.0]),
+        Properties("transform.rotation.y", [1.0, 1.5, 1.0]),
+        Properties("transform.rotation.x", [1.0, 1.5, 1.0]),
+        Properties("transform.rotation.z", [1.0, 1.5, 1.0]),
     ]
 
     func name(at index: Int) -> String? {
         guard index < count else {
             return nil
         }
-        return propertiesAndValues[index].keyPath
+        return properties[index].keyPath
     }
 
     func animation(at index: Int) -> CAKeyframeAnimation? {
@@ -32,22 +46,17 @@ struct Animations {
             return nil
         }
 
-        let propertyAndValues = propertiesAndValues[index]
-        return makeAnimation(keyPath: propertyAndValues.keyPath, values: propertyAndValues.values)
+        let animationProperties = properties[index]
+        return makeAnimation(keyPath: animationProperties.keyPath, properties: animationProperties)
     }
 
-    func makeAnimation(
-        keyPath: KeyPath,
-        values: Values? = nil,
-        keyTimes: [NSNumber] = Self.keyTimes,
-        duration: CFTimeInterval = Self.shortDuration,
-        repetitions: Float = Self.repetitions
-    ) -> CAKeyframeAnimation {
+    func makeAnimation(keyPath: KeyPath, properties: Properties) -> CAKeyframeAnimation {
         let animation = CAKeyframeAnimation(keyPath: keyPath)
-        animation.values = values
-        animation.keyTimes = keyTimes
-        animation.duration = duration
-        animation.repeatCount = repetitions
+        animation.values = properties.values
+        animation.keyTimes = properties.keyTimes
+        animation.duration = properties.duration
+        animation.repeatCount = properties.repetitions
         return animation
     }
+
 }

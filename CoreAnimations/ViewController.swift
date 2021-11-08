@@ -22,6 +22,7 @@ final class ViewController: UIViewController {
             return
         }
         imageView.layer.add(animation, forKey: nil)
+        startAnimationButton.layer.add(animation, forKey: nil)
     }
 
 }
@@ -96,7 +97,7 @@ private extension ViewController {
     func makeImageView() -> UIImageView {
         let imageView = UIImageView(image: image)
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.contentMode = .scaleAspectFill
+        imageView.contentMode = .scaleAspectFit
         imageView.layer.cornerRadius = 10
         return imageView
     }
@@ -108,6 +109,7 @@ private extension ViewController {
         button.addTarget(self, action: #selector(animate), for: .touchUpInside)
         button.setTitleColor(.secondaryLabel, for: .normal)
         button.backgroundColor = .secondarySystemBackground
+        button.setTitleColor(.systemGreen, for: .highlighted)
         return button
     }
 }
