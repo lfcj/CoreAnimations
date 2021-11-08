@@ -1,10 +1,3 @@
-//
-//  CoreAnimationsTests.swift
-//  CoreAnimationsTests
-//
-//  Created by Admin on 08/11/2021.
-//
-
 import XCTest
 @testable import CoreAnimations
 

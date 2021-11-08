@@ -1,10 +1,3 @@
-//
-//  SceneDelegate.swift
-//  CoreAnimations
-//
-//  Created by Admin on 08/11/2021.
-//
-
 import UIKit
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {

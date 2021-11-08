@@ -1,10 +1,3 @@
-//
-//  CoreAnimationsUITestsLaunchTests.swift
-//  CoreAnimationsUITests
-//
-//  Created by Admin on 08/11/2021.
-//
-
 import XCTest
 
 class CoreAnimationsUITestsLaunchTests: XCTestCase {
