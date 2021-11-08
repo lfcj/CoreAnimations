@@ -99,6 +99,8 @@ private extension ViewController {
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.contentMode = .scaleAspectFit
         imageView.layer.cornerRadius = 10
+        imageView.layer.borderWidth = 5
+        imageView.layer.borderColor = view.backgroundColor?.cgColor
         return imageView
     }
 
@@ -110,6 +112,8 @@ private extension ViewController {
         button.setTitleColor(.secondaryLabel, for: .normal)
         button.backgroundColor = .secondarySystemBackground
         button.setTitleColor(.systemGreen, for: .highlighted)
+        button.layer.borderWidth = 5
+        button.layer.borderColor = view.backgroundColor?.cgColor
         return button
     }
 }
