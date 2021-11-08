@@ -38,8 +38,8 @@ private extension ViewController {
             imageView.trailingAnchor.constraint(equalTo: view.readableContentGuide.trailingAnchor, constant: -20),
             imageView.heightAnchor.constraint(equalTo: imageView.widthAnchor),
 
-            startAnimationButton.leadingAnchor.constraint(equalTo: view.readableContentGuide.leadingAnchor, constant: 20),
-            startAnimationButton.topAnchor.constraint(equalTo: view.readableContentGuide.topAnchor, constant: 10),
+            startAnimationButton.bottomAnchor.constraint(equalTo: view.readableContentGuide.bottomAnchor),
+            startAnimationButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             startAnimationButton.widthAnchor.constraint(equalToConstant: 150),
             startAnimationButton.heightAnchor.constraint(equalToConstant: 48)
         ])
@@ -64,7 +64,8 @@ private extension ViewController {
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("Start animation", for: .normal)
         button.addTarget(self, action: #selector(animate), for: .touchUpInside)
-        button.setTitleColor(.cyan, for: .normal)
+        button.setTitleColor(.secondaryLabel, for: .normal)
+        button.backgroundColor = .secondarySystemBackground
         return button
     }
 }
