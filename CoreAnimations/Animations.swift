@@ -13,6 +13,7 @@ struct Animations {
     private static let repetitions: Float = 5
 
     private let propertiesAndValues: [(keyPath: KeyPath, values: Values)] = [
+        ("anchorPoint", [CGPoint(x: 0, y: 0), CGPoint(x: 0.1, y: 0.1), CGPoint(x: 0, y: 0)]),
         ("transform.scale", [1.0, 1.2, 1.0]),
         ("transform.rotation.y", [1.0, 1.5, 1.0]),
         ("transform.rotation.x", [1.0, 1.5, 1.0]),
