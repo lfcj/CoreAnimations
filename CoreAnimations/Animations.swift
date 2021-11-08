@@ -48,11 +48,11 @@ struct Animations {
             return nil
         }
 
-        return makeAnimation(keyPath: animationProperties.keyPath, properties: properties[index])
+        return makeAnimation(properties: properties[index])
     }
 
-    func makeAnimation(keyPath: KeyPath, properties: Properties) -> CAKeyframeAnimation {
-        let animation = CAKeyframeAnimation(keyPath: keyPath)
+    func makeAnimation(properties: Properties) -> CAKeyframeAnimation {
+        let animation = CAKeyframeAnimation(keyPath: properties.keyPath)
         animation.values = properties.values
         animation.keyTimes = properties.keyTimes
         animation.duration = properties.duration
@@ -60,8 +60,8 @@ struct Animations {
         return animation
     }
 
-    func makeBasicAnimation(keyPath: KeyPath, properties: Properties) -> CABasicAnimation {
-        let animation = CABasicAnimation(keyPath: keyPath)
+    func makeBasicAnimation(properties: Properties) -> CABasicAnimation {
+        let animation = CABasicAnimation(keyPath: properties.keyPath)
         animation.fromValue = properties.values.first
         animation.toValue = properties.values.last
         animation.duration = properties.duration
