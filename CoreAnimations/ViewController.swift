@@ -15,6 +15,12 @@ final class ViewController: UIViewController {
         addConstraints()
     }
 
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+
+        imageView.layer.shadowPath = UIBezierPath(rect: imageView.bounds).cgPath
+    }
+
     @objc private func animate() {
         imageView.layer.removeAllAnimations()
         let currentIndex = animationPickerView.selectedRow(inComponent: 0)
@@ -101,6 +107,14 @@ private extension ViewController {
         imageView.layer.cornerRadius = 10
         imageView.layer.borderWidth = 5
         imageView.layer.borderColor = UIColor.lightGray.cgColor
+        imageView.layer.shadowColor = UIColor.black.cgColor
+        imageView.layer.shadowOpacity = 1
+        imageView.layer.shadowOffset = CGSize(width: -1, height: 3)
+        imageView.layer.shadowRadius = 10
+        imageView.layer.shouldRasterize = true
+        imageView.layer.rasterizationScale = UIScreen.main.scale
+        imageView.clipsToBounds = true
+        imageView.layer.masksToBounds = false
         return imageView
     }
 
