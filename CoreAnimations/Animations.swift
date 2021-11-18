@@ -50,6 +50,14 @@ struct Animations {
         Properties("borderWidth", [10, 3, 10]),
         Properties("bounds", [CGRect.zero, CGRect(origin: .zero, size: CGSize(width: 1000, height: 1000)), CGRect.zero]),
         Properties("cornerRadius", [30, 100, 50]),
+        Properties(
+            "contentsRect",
+            [
+                CGRect(origin: .zero, size: CGSize(width: 200, height: 200)),
+                CGRect(origin: .zero, size: CGSize(width: 100, height: 100)),
+                CGRect(origin: .zero, size: CGSize(width: 50, height: 200)),
+            ]
+        ),
         Properties("hidden", [true, false, true], duration: 1.2),
         Properties("opacity", [0.1, 0.5, 0.1], duration: 0.7),
         Properties("position", [CGPoint(x: 250, y: 250), CGPoint(x: 120, y: 220), CGPoint(x: 0, y: 250)]),
@@ -90,6 +98,7 @@ struct Animations {
             return nil
         }
 
+//        UIView().layer.contentsRect
         return properties[index].keyPath
     }
 

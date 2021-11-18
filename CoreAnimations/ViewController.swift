@@ -30,7 +30,7 @@ final class ViewController: UIViewController {
         guard let animation = animations.animation(at: currentIndex) else {
             return
         }
-        gradientLayer.isHidden = true
+
         animateColorsIfPossible(animation)
         imageView.layer.add(animation, forKey: animation.keyPath)
         startAnimationButton.layer.add(animation, forKey: animation.keyPath)
@@ -38,6 +38,7 @@ final class ViewController: UIViewController {
 
     func animateColorsIfPossible(_ animation: CAPropertyAnimation) {
         guard animation.keyPath == "colors" else {
+            gradientLayer.isHidden = true
             return
         }
 
