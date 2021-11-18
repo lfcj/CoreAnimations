@@ -7,6 +7,7 @@ final class ViewController: UIViewController {
 
     private lazy var animationPickerView = makePickerView()
     private lazy var imageView = makeImageView()
+    private lazy var gradientLayer = makeGradientLayer()
     private lazy var startAnimationButton = makeButton()
     
     override func viewDidLoad() {
@@ -18,6 +19,8 @@ final class ViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
+        imageView.layer.insertSublayer(gradientLayer, at: 0)
+        gradientLayer.isHidden = true
         imageView.layer.shadowPath = UIBezierPath(rect: imageView.bounds).cgPath
     }
 
@@ -27,8 +30,19 @@ final class ViewController: UIViewController {
         guard let animation = animations.animation(at: currentIndex) else {
             return
         }
-        imageView.layer.add(animation, forKey: nil)
-        startAnimationButton.layer.add(animation, forKey: nil)
+        gradientLayer.isHidden = true
+        animateColorsIfPossible(animation)
+        imageView.layer.add(animation, forKey: animation.keyPath)
+        startAnimationButton.layer.add(animation, forKey: animation.keyPath)
+    }
+
+    func animateColorsIfPossible(_ animation: CAPropertyAnimation) {
+        guard animation.keyPath == "colors" else {
+            return
+        }
+
+        gradientLayer.isHidden = false
+        gradientLayer.add(animation, forKey: animation.keyPath)
     }
 
 }
@@ -52,6 +66,16 @@ extension ViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         animations.name(at: row)
     }
+
+}
+
+// MARK: - CAAnimationDelegate
+
+extension ViewController: CAAnimationDelegate {
+
+    func animationDidStart(_ anim: CAAnimation) {}
+
+    func animationDidStop(_ anim: CAAnimation, finished flag: Bool) {}
 
 }
 
@@ -97,6 +121,7 @@ private extension ViewController {
         pickerView.translatesAutoresizingMaskIntoConstraints = false
         pickerView.dataSource = self
         pickerView.delegate = self
+        pickerView.layer.cornerRadius = 12
         return pickerView
     }
 
@@ -116,6 +141,16 @@ private extension ViewController {
         imageView.clipsToBounds = true
         imageView.layer.masksToBounds = false
         return imageView
+    }
+
+    func makeGradientLayer()-> CAGradientLayer {
+        let gradient = CAGradientLayer()
+        gradient.frame = imageView.bounds
+        gradient.colors = [#colorLiteral(red: 0.4745098054, green: 0.8392156959, blue: 0.9764705896, alpha: 1).cgColor, #colorLiteral(red: 0.721568644, green: 0.8862745166, blue: 0.5921568871, alpha: 1).cgColor , #colorLiteral(red: 0.9764705896, green: 0.850980401, blue: 0.5490196347, alpha: 1).cgColor]
+        gradient.startPoint = CGPoint(x:0.0, y:0.5)
+        gradient.endPoint = CGPoint(x:1.0, y:0.5)
+        gradient.locations =  [-0.5, 1.5]
+        return gradient
     }
 
     func makeButton() -> UIButton {
