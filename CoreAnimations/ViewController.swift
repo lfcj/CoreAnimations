@@ -13,7 +13,7 @@ final class ViewController: UIViewController {
     private lazy var emitterLayer = makeEmitterLayer()
     private lazy var replicatorLayer = makeReplicatorLayer()
     private lazy var startAnimationButton = makeButton()
-    
+
     private var animatableViews: [UIView] {
         [imageView, startAnimationButton]
     }
@@ -24,6 +24,7 @@ final class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
         addViews()
         addConstraints()
     }
@@ -184,7 +185,7 @@ private extension ViewController {
         return gradient
     }
 
-    
+
     func makeShapeLayer() -> CAShapeLayer {
         let layer = CAShapeLayer()
         layer.frame = imageView.bounds

@@ -17,6 +17,7 @@
 		848B2CA8273999FE00627BB6 /* CoreAnimationsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848B2CA7273999FE00627BB6 /* CoreAnimationsUITests.swift */; };
 		848B2CAA273999FE00627BB6 /* CoreAnimationsUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848B2CA9273999FE00627BB6 /* CoreAnimationsUITestsLaunchTests.swift */; };
 		848B2CB72739A3F800627BB6 /* Animations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848B2CB62739A3F800627BB6 /* Animations.swift */; };
+		848B2CBA2748F64700627BB6 /* CATextLayerForegroundColorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848B2CB92748F64700627BB6 /* CATextLayerForegroundColorViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +53,7 @@
 		848B2CA9273999FE00627BB6 /* CoreAnimationsUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreAnimationsUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		848B2CB62739A3F800627BB6 /* Animations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animations.swift; sourceTree = "<group>"; };
 		848B2CB82748D98C00627BB6 /* CoreAnimations.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CoreAnimations.entitlements; sourceTree = "<group>"; };
+		848B2CB92748F64700627BB6 /* CATextLayerForegroundColorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CATextLayerForegroundColorViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +113,7 @@
 				848B2C91273999FE00627BB6 /* LaunchScreen.storyboard */,
 				848B2C94273999FE00627BB6 /* Info.plist */,
 				848B2CB62739A3F800627BB6 /* Animations.swift */,
+				848B2CB92748F64700627BB6 /* CATextLayerForegroundColorViewController.swift */,
 			);
 			path = CoreAnimations;
 			sourceTree = "<group>";
@@ -264,6 +267,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				848B2C8B273999FA00627BB6 /* ViewController.swift in Sources */,
+				848B2CBA2748F64700627BB6 /* CATextLayerForegroundColorViewController.swift in Sources */,
 				848B2C87273999FA00627BB6 /* AppDelegate.swift in Sources */,
 				848B2CB72739A3F800627BB6 /* Animations.swift in Sources */,
 				848B2C89273999FA00627BB6 /* SceneDelegate.swift in Sources */,
