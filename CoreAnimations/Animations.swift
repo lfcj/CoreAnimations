@@ -19,6 +19,7 @@ struct Animations {
     ]
     static let textLayerKeyPaths = ["fontSize", "foregroundColor"]
     static let emitterLayerKeyPaths = ["emitterPosition", "emitterPosition.x", "emitterPosition.y", "emitterSize", "emitterSize.width"]
+    static let replicatorLayerKeyPaths = ["instanceDelay", "instanceTransform", "instanceRedOffset"]
 
     enum Kind {
         case keyframe
@@ -60,7 +61,7 @@ struct Animations {
         Properties("anchorPoint.x", [0.2, 0]),
         Properties("anchorPoint.y", [0.2, 0]),
         Properties("backgroundColor", [#colorLiteral(red: 0.9254902005, green: 0.2352941185, blue: 0.1019607857, alpha: 1).cgColor, #colorLiteral(red: 0.9529411793, green: 0.6862745285, blue: 0.1333333403, alpha: 1).cgColor, #colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1).cgColor]),
-        Properties("backgroundFilters", [/*todo*/]),
+        //Properties("backgroundFilters", [/*TODO*/]),
         Properties("borderColor", [#colorLiteral(red: 0.9254902005, green: 0.2352941185, blue: 0.1019607857, alpha: 1).cgColor, #colorLiteral(red: 0.9529411793, green: 0.6862745285, blue: 0.1333333403, alpha: 1).cgColor, #colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1).cgColor]),
         Properties("borderWidth", [10, 3, 10]),
         Properties("bounds", [CGRect.zero, CGRect(origin: .zero, size: CGSize(width: 400, height: 400)), CGRect.zero]),
@@ -83,7 +84,7 @@ struct Animations {
         Properties("shadowOpacity", [0.1, 0.5, 1], duration: 0.7),
         Properties("shadowPath", [UIBezierPath(rect: .zero).cgPath, UIBezierPath(rect: CGRect(origin: .zero, size: CGSize(width: 400, height: 400))).cgPath, UIBezierPath(rect: .zero).cgPath], duration: 1.5),
         Properties("shadowRadius", [10, 20, 50], duration: 0.7),
-        Properties("zPosition", [-5, 20, 5], duration: 1.2),
+        //Properties("zPosition", [-5, 20, 5], duration: 1.2), TODO
         // CAGradientLayer
         Properties(
             "colors",
@@ -113,15 +114,32 @@ struct Animations {
         Properties("emitterPosition.x", [20, 50, 20, 80]),
         Properties("emitterPosition.y", [0, 100, 200, 300, 400, 500, 600]),
         Properties("emitterSize.width", [0, 100, 200, 300, 400, 500, 600]),
+        // CAReplicatorLayer
+        Properties("instanceDelay", stride(from: 10, to: 1000, by: 5).map { 1 / $0 }, duration: 1),
+        Properties(
+            "instanceTransform",
+            [
+                CATransform3DMakeRotation(-CGFloat.pi * 2 / CGFloat(20), 1, 0, 0),
+                CATransform3DMakeRotation(-CGFloat.pi * 2 / CGFloat(20), 0, 1, 0),
+                CATransform3DMakeRotation(-CGFloat.pi * 2 / CGFloat(20), 1, 0, 0),
+                CATransform3DMakeRotation(-CGFloat.pi * 2 / CGFloat(20), 0, 1, 0),
+                CATransform3DMakeRotation(-CGFloat.pi * 2 / CGFloat(100), 1, 0, 1),
+                CATransform3DMakeRotation(-CGFloat.pi * 2 / CGFloat(100), 0, 1, 1),
+                CATransform3DMakeRotation(-CGFloat.pi * 2 / CGFloat(100), 1, 0, 1),
+                CATransform3DMakeRotation(-CGFloat.pi * 2 / CGFloat(100), 0, 1, 1),
+            ],
+            duration: 3
+        ),
+        //Properties("instanceRedOffset", stride(from: 1, to: 100, by: 1).map { 1 / $0 }, duration: 1), TODO
         // CATransform3D
         Properties("transform.scale.x", [1.0, 1.2, 1.0]),
         Properties("transform.scale.y", [1.0, 1.2, 1.0]),
-        Properties("transform.scale.z", [1.0, 1.2, 1.0]),
+        Properties("transform.scale.z", [1.0, 1.2, 1.0]), // TODO
         Properties("transform.scale", [1.0, 1.2, 1.0]),
         Properties("transform.translation.x", [10.0, 20, 10]),
         Properties("transform.translation.y", [10.0, 20, 10]),
         Properties("transform.translation.z", [10.0, 20, 10]),
-        Properties("transform.translation", [10.0, 20, 10]),
+        Properties("transform.translation", [10.0, 20, 10]), // TODO
         Properties("transform.rotation.y", [1.0, 1.5, 1.0]),
         Properties("transform.rotation.x", [1.0, 1.5, 1.0]),
         Properties("transform.rotation.z", [1.0, 1.5, 1.0]),

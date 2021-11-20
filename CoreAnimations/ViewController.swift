@@ -11,6 +11,7 @@ final class ViewController: UIViewController {
     private lazy var shapeLayer = makeShapeLayer()
     private lazy var textLayer = makeTextLayer()
     private lazy var emitterLayer = makeEmitterLayer()
+    private lazy var replicatorLayer = makeReplicatorLayer()
     private lazy var startAnimationButton = makeButton()
     
     private var animatableViews: [UIView] {
@@ -18,7 +19,7 @@ final class ViewController: UIViewController {
     }
 
     private var layers: [CALayer] {
-        [gradientLayer, shapeLayer, textLayer, emitterLayer]
+        [gradientLayer, shapeLayer, textLayer, emitterLayer, replicatorLayer]
     }
 
     override func viewDidLoad() {
@@ -45,6 +46,7 @@ final class ViewController: UIViewController {
         animateLayerIfPossible(shapeLayer, animation: animation, keyPaths: Animations.shapeLayerKeyPaths)
         animateLayerIfPossible(textLayer, animation: animation, keyPaths: Animations.textLayerKeyPaths)
         animateLayerIfPossible(emitterLayer, animation: animation, keyPaths: Animations.emitterLayerKeyPaths)
+        animateLayerIfPossible(replicatorLayer, animation: animation, keyPaths: Animations.replicatorLayerKeyPaths)
         animatableViews.forEach { $0.layer.add(animation, forKey: animation.keyPath) }
     }
 
@@ -225,6 +227,37 @@ private extension ViewController {
         cell.contents = #imageLiteral(resourceName: "animation").cgImage
 
         layer.emitterCells = [cell]
+        return layer
+    }
+
+    func makeReplicatorLayer() -> CAReplicatorLayer {
+        let layer = CAReplicatorLayer()
+        layer.frame = CGRect(
+            origin: CGPoint(x: imageView.bounds.width / 2 - 50, y: imageView.bounds.height / 2 - 50),
+            size: CGSize(width: 100, height: 100)
+        )
+
+        let circle = CALayer()
+        circle.frame = CGRect(origin: .zero, size: CGSize(width: 10, height: 10))
+        circle.backgroundColor = #colorLiteral(red: 0.9450980392, green: 0.9098039216, blue: 0, alpha: 1).cgColor
+        circle.cornerRadius = 5
+        circle.position = CGPoint(x: 0, y: 50)
+        layer.addSublayer(circle)
+
+        let fadeOut = CABasicAnimation(keyPath: "opacity")
+        fadeOut.fromValue = 1
+        fadeOut.toValue = 0
+        fadeOut.duration = 1
+        fadeOut.repeatCount = Float.greatestFiniteMagnitude
+        circle.add(fadeOut, forKey: nil)
+
+        let instanceCount = 20
+        layer.instanceCount = instanceCount
+        layer.instanceRedOffset = 1 / Float(instanceCount)
+        layer.instanceDelay = fadeOut.duration / CFTimeInterval(instanceCount)
+
+        let angle = -CGFloat.pi * 2 / CGFloat(instanceCount)
+        layer.instanceTransform = CATransform3DMakeRotation(angle, 0, 0, 1)
         return layer
     }
 
