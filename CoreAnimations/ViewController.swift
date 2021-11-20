@@ -10,6 +10,7 @@ final class ViewController: UIViewController {
     private lazy var gradientLayer = makeGradientLayer()
     private lazy var shapeLayer = makeShapeLayer()
     private lazy var textLayer = makeTextLayer()
+    private lazy var emitterLayer = makeEmitterLayer()
     private lazy var startAnimationButton = makeButton()
     
     private var animatableViews: [UIView] {
@@ -17,7 +18,7 @@ final class ViewController: UIViewController {
     }
 
     private var layers: [CALayer] {
-        [gradientLayer, shapeLayer, textLayer]
+        [gradientLayer, shapeLayer, textLayer, emitterLayer]
     }
 
     override func viewDidLoad() {
@@ -29,11 +30,6 @@ final class ViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
-        imageView.layer.addSublayer(gradientLayer)
-        imageView.layer.addSublayer(shapeLayer)
-        imageView.layer.addSublayer(textLayer)
-
-        layers.forEach{ $0.isHidden = true }
         imageView.layer.shadowPath = UIBezierPath(rect: imageView.bounds).cgPath
     }
 
@@ -44,18 +40,20 @@ final class ViewController: UIViewController {
             return
         }
 
-        animateLayerIfPossible(gradientLayer, animation: animation, keyPaths: Animations.gradientLayersKeyPaths)
-        animateLayerIfPossible(shapeLayer, animation: animation, keyPaths: Animations.shapeLayersKeyPaths)
-        animateLayerIfPossible(textLayer, animation: animation, keyPaths: Animations.textLayersKeyPaths)
+        layers.forEach { $0.removeFromSuperlayer() }
+        animateLayerIfPossible(gradientLayer, animation: animation, keyPaths: Animations.gradientLayerKeyPaths)
+        animateLayerIfPossible(shapeLayer, animation: animation, keyPaths: Animations.shapeLayerKeyPaths)
+        animateLayerIfPossible(textLayer, animation: animation, keyPaths: Animations.textLayerKeyPaths)
+        animateLayerIfPossible(emitterLayer, animation: animation, keyPaths: Animations.emitterLayerKeyPaths)
         animatableViews.forEach { $0.layer.add(animation, forKey: animation.keyPath) }
     }
 
     func animateLayerIfPossible<Layer: CALayer>(_ layer: Layer, animation: CAPropertyAnimation, keyPaths: [String]) {
         guard let keyPath = animation.keyPath, keyPaths.contains(keyPath) else {
-            layer.isHidden = true
             return
         }
 
+        imageView.layer.addSublayer(layer)
         layer.removeAllAnimations()
         layer.isHidden = false
         layer.add(animation, forKey: keyPath)
@@ -208,6 +206,25 @@ private extension ViewController {
         layer.fontSize = 60
         layer.font = UIFont.boldSystemFont(ofSize: 60)
         layer.foregroundColor = #colorLiteral(red: 0.951250835, green: 0.9686274529, blue: 0.1545007536, alpha: 1).cgColor
+        return layer
+    }
+
+    func makeEmitterLayer() -> CAEmitterLayer {
+        let layer = CAEmitterLayer()
+        layer.frame = CGRect(x: 20, y: 20, width: 250, height: 80)
+        layer.emitterPosition = CGPoint(x: 320, y: 320)
+        layer.emitterShape = .circle
+
+        let cell = CAEmitterCell()
+        cell.birthRate = 2
+        cell.lifetime = 10
+        cell.velocity = 200
+        cell.scale = 0.05
+
+        cell.emissionRange = CGFloat.pi * 2.0
+        cell.contents = #imageLiteral(resourceName: "animation").cgImage
+
+        layer.emitterCells = [cell]
         return layer
     }
 

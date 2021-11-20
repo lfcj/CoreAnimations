@@ -7,8 +7,8 @@ struct Animations {
     typealias Values = [Any]
     typealias KeyTimes = [NSNumber]
 
-    static let gradientLayersKeyPaths = ["colors", "locations", "endPoint", "startPoint"]
-    static let shapeLayersKeyPaths = [
+    static let gradientLayerKeyPaths = ["colors", "locations", "endPoint", "startPoint"]
+    static let shapeLayerKeyPaths = [
         "fillColor",
         "lineDashPhase",
         "lineWidth",
@@ -17,7 +17,8 @@ struct Animations {
         "strokeStart",
         "strokeEnd"
     ]
-    static let textLayersKeyPaths = ["fontSize", "foregroundColor"]
+    static let textLayerKeyPaths = ["fontSize", "foregroundColor"]
+    static let emitterLayerKeyPaths = ["emitterPosition", "emitterPosition.x", "emitterPosition.y", "emitterSize", "emitterSize.width"]
 
     enum Kind {
         case keyframe
@@ -107,6 +108,11 @@ struct Animations {
         // CATextLayer
         Properties("fontSize", [20, 40, 80, 70, 60], duration: 1, repetitions: 1),
         Properties("foregroundColor",  [#colorLiteral(red: 0.9254902005, green: 0.2352941185, blue: 0.1019607857, alpha: 1).cgColor, #colorLiteral(red: 0.9529411793, green: 0.6862745285, blue: 0.1333333403, alpha: 1).cgColor, #colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1).cgColor]),
+        // CAEmitterLayer
+        Properties("emitterPosition", [CGPoint(x: 100, y: 300), CGPoint(x: 0.1, y: 0.1), CGPoint(x: 80, y: 50)]),
+        Properties("emitterPosition.x", [20, 50, 20, 80]),
+        Properties("emitterPosition.y", [0, 100, 200, 300, 400, 500, 600]),
+        Properties("emitterSize.width", [0, 100, 200, 300, 400, 500, 600]),
         // CATransform3D
         Properties("transform.scale.x", [1.0, 1.2, 1.0]),
         Properties("transform.scale.y", [1.0, 1.2, 1.0]),
