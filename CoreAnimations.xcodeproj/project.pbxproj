@@ -104,6 +104,7 @@
 		848B2C85273999FA00627BB6 /* CoreAnimations */ = {
 			isa = PBXGroup;
 			children = (
+				848B2CBB2749008900627BB6 /* Animation Controllers */,
 				848B2CB82748D98C00627BB6 /* CoreAnimations.entitlements */,
 				848B2C86273999FA00627BB6 /* AppDelegate.swift */,
 				848B2C88273999FA00627BB6 /* SceneDelegate.swift */,
@@ -113,7 +114,6 @@
 				848B2C91273999FE00627BB6 /* LaunchScreen.storyboard */,
 				848B2C94273999FE00627BB6 /* Info.plist */,
 				848B2CB62739A3F800627BB6 /* Animations.swift */,
-				848B2CB92748F64700627BB6 /* CATextLayerForegroundColorViewController.swift */,
 			);
 			path = CoreAnimations;
 			sourceTree = "<group>";
@@ -133,6 +133,14 @@
 				848B2CA9273999FE00627BB6 /* CoreAnimationsUITestsLaunchTests.swift */,
 			);
 			path = CoreAnimationsUITests;
+			sourceTree = "<group>";
+		};
+		848B2CBB2749008900627BB6 /* Animation Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				848B2CB92748F64700627BB6 /* CATextLayerForegroundColorViewController.swift */,
+			);
+			path = "Animation Controllers";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
