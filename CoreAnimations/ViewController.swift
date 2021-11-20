@@ -29,9 +29,10 @@ final class ViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
-        imageView.layer.insertSublayer(gradientLayer, at: 0)
-        imageView.layer.insertSublayer(shapeLayer, at: 1)
-        imageView.layer.insertSublayer(textLayer, at: 2)
+        imageView.layer.addSublayer(gradientLayer)
+        imageView.layer.addSublayer(shapeLayer)
+        imageView.layer.addSublayer(textLayer)
+
         layers.forEach{ $0.isHidden = true }
         textLayer.isHidden = false
         imageView.layer.shadowPath = UIBezierPath(rect: imageView.bounds).cgPath
@@ -146,6 +147,30 @@ private extension ViewController {
         imageView.layer.rasterizationScale = UIScreen.main.scale
         imageView.clipsToBounds = true
         imageView.layer.masksToBounds = false
+
+//        let background = CATextLayer()
+//        background.string = "background"
+//        background.backgroundColor = UIColor.red.cgColor
+//        background.alignmentMode = .center
+//        background.fontSize = 96
+//        background.frame = CGRect(x: 10, y: 10, width: 250, height: 160)
+//
+//        let foreground = CATextLayer()
+//        foreground.string = "foreground"
+//        foreground.backgroundColor = UIColor.blue.cgColor
+//        foreground.alignmentMode = .center
+//        foreground.fontSize = 48
+//        foreground.opacity = 0.5
+//        foreground.frame = CGRect(x: 20, y: 20, width: 200, height: 60)
+//        foreground.masksToBounds = true
+
+//        if let blurFilter = CIFilter(name: "CIGaussianBlur", parameters: [kCIInputRadiusKey: 2]) {
+//            foreground.backgroundFilters = [blurFilter]
+//        }
+//
+//        imageView.layer.addSublayer(background)
+//        background.addSublayer(foreground)
+
         return imageView
     }
 
@@ -178,12 +203,22 @@ private extension ViewController {
 
     func makeTextLayer() -> CATextLayer {
         let layer = CATextLayer()
-        layer.contentsRect = imageView.bounds
         layer.string = "Be great"
-        layer.font = UIFont.systemFont(ofSize: 80)
-        layer.fontSize = 80
-        layer.foregroundColor = #colorLiteral(red: 0.3647058904, green: 0.06666667014, blue: 0.9686274529, alpha: 1).cgColor
+        layer.frame = CGRect(x: 20, y: 20, width: 250, height: 80)
+        layer.fontSize = 60
+        layer.font = UIFont.boldSystemFont(ofSize: 60)
+        layer.foregroundColor = #colorLiteral(red: 0.951250835, green: 0.9686274529, blue: 0.1545007536, alpha: 1).cgColor
+//        layer.masksToBounds = true
         return layer
+        
+//        let foreground = CATextLayer()
+//        foreground.string = "foreground"
+//        foreground.backgroundColor = UIColor.blue.cgColor
+//        foreground.alignmentMode = .center
+//        foreground.fontSize = 48
+//        foreground.opacity = 0.5
+//        foreground.frame = CGRect(x: 20, y: 20, width: 200, height: 60)
+//        foreground.masksToBounds = true
     }
 
     func makeButton() -> UIButton {
