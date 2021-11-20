@@ -34,7 +34,6 @@ final class ViewController: UIViewController {
         imageView.layer.addSublayer(textLayer)
 
         layers.forEach{ $0.isHidden = true }
-        textLayer.isHidden = false
         imageView.layer.shadowPath = UIBezierPath(rect: imageView.bounds).cgPath
     }
 
@@ -136,6 +135,7 @@ private extension ViewController {
         let imageView = UIImageView(image: image)
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.contentMode = .scaleAspectFit
+        imageView.backgroundColor = .yellow
         imageView.layer.cornerRadius = 10
         imageView.layer.borderWidth = 5
         imageView.layer.borderColor = UIColor.lightGray.cgColor
@@ -208,17 +208,7 @@ private extension ViewController {
         layer.fontSize = 60
         layer.font = UIFont.boldSystemFont(ofSize: 60)
         layer.foregroundColor = #colorLiteral(red: 0.951250835, green: 0.9686274529, blue: 0.1545007536, alpha: 1).cgColor
-//        layer.masksToBounds = true
         return layer
-        
-//        let foreground = CATextLayer()
-//        foreground.string = "foreground"
-//        foreground.backgroundColor = UIColor.blue.cgColor
-//        foreground.alignmentMode = .center
-//        foreground.fontSize = 48
-//        foreground.opacity = 0.5
-//        foreground.frame = CGRect(x: 20, y: 20, width: 200, height: 60)
-//        foreground.masksToBounds = true
     }
 
     func makeButton() -> UIButton {
