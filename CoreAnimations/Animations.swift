@@ -8,7 +8,16 @@ struct Animations {
     typealias KeyTimes = [NSNumber]
 
     static let gradientLayersKeyPaths = ["colors", "locations", "endPoint", "startPoint"]
-    static let shapeLayersKeyPaths = ["fillColor", "lineDashPhase", "lineWidth", "miterLimit", "strokeColor", "strokeStart", "strokeEnd"]
+    static let shapeLayersKeyPaths = [
+        "fillColor",
+        "lineDashPhase",
+        "lineWidth",
+        "miterLimit",
+        "strokeColor",
+        "strokeStart",
+        "strokeEnd"
+    ]
+    static let textLayersKeyPaths = ["fontSize", "foregroundColor"]
 
     enum Kind {
         case keyframe
@@ -86,11 +95,14 @@ struct Animations {
         // CAShapeLayer
         Properties("fillColor", [#colorLiteral(red: 0.9254902005, green: 0.2352941185, blue: 0.1019607857, alpha: 1).cgColor, #colorLiteral(red: 0.9529411793, green: 0.6862745285, blue: 0.1333333403, alpha: 1).cgColor, #colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1).cgColor], duration: 0.9),
         Properties("lineDashPhase", [0, 25], duration: 0.9, kind: .basic),
-        Properties("miterLimit", [20, 100, 200], duration: 0.9),
+        Properties("miterLimit", [0, 2, 4, 8, 16], duration: 0.9),
         Properties("lineWidth", [0, 2, 4, 8, 10]),
         Properties("strokeColor", [#colorLiteral(red: 0.9254902005, green: 0.2352941185, blue: 0.1019607857, alpha: 1).cgColor, #colorLiteral(red: 0.9529411793, green: 0.6862745285, blue: 0.1333333403, alpha: 1).cgColor, #colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1).cgColor]),
         Properties("strokeStart", [0, 0.2, 0.4, 0.6, 0.8, 1]),
         Properties("strokeEnd", [0, 0.2, 0.4, 0.6, 0.8, 1]),
+        // CATextLayer
+        Properties("fontSize", [20, 40, 80]),
+        Properties("foregroundColor",  [#colorLiteral(red: 0.9254902005, green: 0.2352941185, blue: 0.1019607857, alpha: 1).cgColor, #colorLiteral(red: 0.9529411793, green: 0.6862745285, blue: 0.1333333403, alpha: 1).cgColor, #colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1).cgColor]),
         // CATransform3D
         Properties("transform.scale.x", [1.0, 1.2, 1.0]),
         Properties("transform.scale.y", [1.0, 1.2, 1.0]),

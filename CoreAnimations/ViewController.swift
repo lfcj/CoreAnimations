@@ -9,6 +9,7 @@ final class ViewController: UIViewController {
     private lazy var imageView = makeImageView()
     private lazy var gradientLayer = makeGradientLayer()
     private lazy var shapeLayer = makeShapeLayer()
+    private lazy var textLayer = makeTextLayer()
     private lazy var startAnimationButton = makeButton()
     
     private var animatableViews: [UIView] {
@@ -16,7 +17,7 @@ final class ViewController: UIViewController {
     }
 
     private var layers: [CALayer] {
-        [gradientLayer, shapeLayer]
+        [gradientLayer, shapeLayer, textLayer]
     }
 
     override func viewDidLoad() {
@@ -30,7 +31,9 @@ final class ViewController: UIViewController {
 
         imageView.layer.insertSublayer(gradientLayer, at: 0)
         imageView.layer.insertSublayer(shapeLayer, at: 1)
+        imageView.layer.insertSublayer(textLayer, at: 2)
         layers.forEach{ $0.isHidden = true }
+        textLayer.isHidden = false
         imageView.layer.shadowPath = UIBezierPath(rect: imageView.bounds).cgPath
     }
 
@@ -43,6 +46,7 @@ final class ViewController: UIViewController {
 
         animateLayerIfPossible(gradientLayer, animation: animation, keyPaths: Animations.gradientLayersKeyPaths)
         animateLayerIfPossible(shapeLayer, animation: animation, keyPaths: Animations.shapeLayersKeyPaths)
+        animateLayerIfPossible(textLayer, animation: animation, keyPaths: Animations.textLayersKeyPaths)
         animatableViews.forEach { $0.layer.add(animation, forKey: animation.keyPath) }
     }
 
@@ -159,11 +163,26 @@ private extension ViewController {
     func makeShapeLayer() -> CAShapeLayer {
         let layer = CAShapeLayer()
         layer.frame = imageView.bounds
-        layer.path = UIBezierPath(ovalIn: imageView.bounds).cgPath
+        layer.path = UIBezierPath(
+            roundedRect: imageView.bounds,
+            byRoundingCorners: [.bottomLeft, .topRight],
+            cornerRadii: CGSize(width: 100, height: 50)).cgPath
+        //let circle = UIBezierPath(ovalIn: imageView.bounds).cgPath
         layer.strokeColor = UIColor.black.cgColor
         layer.lineWidth = 20
         layer.fillColor = UIColor.red.cgColor
-        layer.lineDashPattern = [10, 5, 5, 5]
+        layer.lineDashPattern = [10, 5]
+        layer.lineJoin = .miter
+        return layer
+    }
+
+    func makeTextLayer() -> CATextLayer {
+        let layer = CATextLayer()
+        layer.contentsRect = imageView.bounds
+        layer.string = "Be great"
+        layer.font = UIFont.systemFont(ofSize: 80)
+        layer.fontSize = 80
+        layer.foregroundColor = #colorLiteral(red: 0.3647058904, green: 0.06666667014, blue: 0.9686274529, alpha: 1).cgColor
         return layer
     }
 
