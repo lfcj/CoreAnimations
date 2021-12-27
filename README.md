@@ -2,66 +2,66 @@
 Let us learn all of CALayer properties by animating Leonardo Fibonacci.
 The goal is to be able to see a quick working demo of any Core Animation.
 
-All properties can be found [here](https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/CoreAnimation_guide/AnimatableProperties/AnimatableProperties.html).
+All properties can be found [here](https:developer.apple.comlibraryarchivedocumentationCocoaConceptualCoreAnimation_guideAnimatablePropertiesAnimatableProperties.html).
 
 ## List of demoed animations
 
 ### CALayer
-* anchorPoint [/]
-* backgroundColor [/]
-* borderColor [/]
-* borderWidth [/]
-* bounds [/]
-* borderWidth [/]
-* bounds [/]
-* cornerRadius [/]
-* contentsRect [/]
-* hidden [/]
-* opacity [/]
-* position [/]
-* shadowColor [/]
-* shadowOffset [/]
-* shadowOpacity [/]
-* shadowPath [/]
-* shadowRadius [/]
+- [x] anchorPoint
+- [x] backgroundColor
+- [x] borderColor
+- [x] borderWidth
+- [x] bounds
+- [x] borderWidth
+- [x] bounds
+- [x] cornerRadius
+- [x] contentsRect
+- [x] hidden
+- [x] opacity
+- [x] position
+- [x] shadowColor
+- [x] shadowOffset
+- [x] shadowOpacity
+- [x] shadowPath
+- [x] shadowRadius
 
 ### CAGradientLayer
-* colors [/]
-* locations [/]
-* startPoint [/]
-* endPoint [/]
+- [x] colors
+- [x] locations
+- [x] startPoint
+- [x] endPoint
 
 ### CAShapeLayer
 
-* fillColor [/]
-* lineDashPhase [/]
-* miterLimit [/]
-* lineWidth [/]
-* strokeColor [/]
-* strokeStart [/]
-* strokeEnd [/]
+- [ ] fillColor
+- [ ] lineDashPhase
+- [ ] miterLimit
+- [ ] lineWidth
+- [ ] strokeColor
+- [ ] strokeStart
+- [ ] strokeEnd
 
 ### CATextLayer
 
-* fontSize [/]
-* foregroundColor [/]
+- [x] fontSize
+- [x] foregroundColor
 
 ### CAEmitterLayer
 
-* emitterPosition [/]
-* emitterSize [/]
+- [x] emitterPosition
+- [x] emitterSize
 
 ### CAReplicatorLayer
-* instanceDelay [/]
-* instanceTransform [/]
-* instanceColor [/]
-* instanceRedOffset [/]
+- [x] instanceDelay
+- [x] instanceTransform
+- [x] instanceColor
+- [x] instanceRedOffset
 
 ### CATransform3D
 
-* transform.scale [/]
-* transform.translation [/]
-* transform.rotation [/]
+- [x] transform.scale
+- [x] transform.translation
+- [x] transform.rotation
 
 ## LIST OF TODOs
 

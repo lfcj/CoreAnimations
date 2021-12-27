@@ -42,7 +42,7 @@
 
 /* Begin PBXFileReference section */
 		848A49452778CE9400E141C4 /* Didot.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Didot.ttf; sourceTree = "<group>"; };
-		848B2C83273999FA00627BB6 /* CoreAnimations.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoreAnimations.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		848B2C83273999FA00627BB6 /* Core Animations Lab.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Core Animations Lab.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		848B2C86273999FA00627BB6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		848B2C88273999FA00627BB6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		848B2C8A273999FA00627BB6 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -50,9 +50,9 @@
 		848B2C8F273999FE00627BB6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		848B2C92273999FE00627BB6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		848B2C94273999FE00627BB6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		848B2C99273999FE00627BB6 /* CoreAnimationsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CoreAnimationsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		848B2C99273999FE00627BB6 /* Core Animations LabTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Core Animations LabTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		848B2C9D273999FE00627BB6 /* CoreAnimationsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreAnimationsTests.swift; sourceTree = "<group>"; };
-		848B2CA3273999FE00627BB6 /* CoreAnimationsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CoreAnimationsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		848B2CA3273999FE00627BB6 /* Core Animations LabUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Core Animations LabUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		848B2CA7273999FE00627BB6 /* CoreAnimationsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreAnimationsUITests.swift; sourceTree = "<group>"; };
 		848B2CA9273999FE00627BB6 /* CoreAnimationsUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreAnimationsUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		848B2CB62739A3F800627BB6 /* Animations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animations.swift; sourceTree = "<group>"; };
@@ -109,9 +109,9 @@
 		848B2C84273999FA00627BB6 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				848B2C83273999FA00627BB6 /* CoreAnimations.app */,
-				848B2C99273999FE00627BB6 /* CoreAnimationsTests.xctest */,
-				848B2CA3273999FE00627BB6 /* CoreAnimationsUITests.xctest */,
+				848B2C83273999FA00627BB6 /* Core Animations Lab.app */,
+				848B2C99273999FE00627BB6 /* Core Animations LabTests.xctest */,
+				848B2CA3273999FE00627BB6 /* Core Animations LabUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -165,9 +165,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		848B2C82273999FA00627BB6 /* CoreAnimations */ = {
+		848B2C82273999FA00627BB6 /* Core Animations Lab */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 848B2CAD273999FE00627BB6 /* Build configuration list for PBXNativeTarget "CoreAnimations" */;
+			buildConfigurationList = 848B2CAD273999FE00627BB6 /* Build configuration list for PBXNativeTarget "Core Animations Lab" */;
 			buildPhases = (
 				848B2C7F273999FA00627BB6 /* Sources */,
 				848B2C80273999FA00627BB6 /* Frameworks */,
@@ -177,14 +177,14 @@
 			);
 			dependencies = (
 			);
-			name = CoreAnimations;
+			name = "Core Animations Lab";
 			productName = CoreAnimations;
-			productReference = 848B2C83273999FA00627BB6 /* CoreAnimations.app */;
+			productReference = 848B2C83273999FA00627BB6 /* Core Animations Lab.app */;
 			productType = "com.apple.product-type.application";
 		};
-		848B2C98273999FE00627BB6 /* CoreAnimationsTests */ = {
+		848B2C98273999FE00627BB6 /* Core Animations LabTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 848B2CB0273999FE00627BB6 /* Build configuration list for PBXNativeTarget "CoreAnimationsTests" */;
+			buildConfigurationList = 848B2CB0273999FE00627BB6 /* Build configuration list for PBXNativeTarget "Core Animations LabTests" */;
 			buildPhases = (
 				848B2C95273999FE00627BB6 /* Sources */,
 				848B2C96273999FE00627BB6 /* Frameworks */,
@@ -195,14 +195,14 @@
 			dependencies = (
 				848B2C9B273999FE00627BB6 /* PBXTargetDependency */,
 			);
-			name = CoreAnimationsTests;
+			name = "Core Animations LabTests";
 			productName = CoreAnimationsTests;
-			productReference = 848B2C99273999FE00627BB6 /* CoreAnimationsTests.xctest */;
+			productReference = 848B2C99273999FE00627BB6 /* Core Animations LabTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		848B2CA2273999FE00627BB6 /* CoreAnimationsUITests */ = {
+		848B2CA2273999FE00627BB6 /* Core Animations LabUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 848B2CB3273999FE00627BB6 /* Build configuration list for PBXNativeTarget "CoreAnimationsUITests" */;
+			buildConfigurationList = 848B2CB3273999FE00627BB6 /* Build configuration list for PBXNativeTarget "Core Animations LabUITests" */;
 			buildPhases = (
 				848B2C9F273999FE00627BB6 /* Sources */,
 				848B2CA0273999FE00627BB6 /* Frameworks */,
@@ -213,9 +213,9 @@
 			dependencies = (
 				848B2CA5273999FE00627BB6 /* PBXTargetDependency */,
 			);
-			name = CoreAnimationsUITests;
+			name = "Core Animations LabUITests";
 			productName = CoreAnimationsUITests;
-			productReference = 848B2CA3273999FE00627BB6 /* CoreAnimationsUITests.xctest */;
+			productReference = 848B2CA3273999FE00627BB6 /* Core Animations LabUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -241,7 +241,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 848B2C7E273999FA00627BB6 /* Build configuration list for PBXProject "CoreAnimations" */;
+			buildConfigurationList = 848B2C7E273999FA00627BB6 /* Build configuration list for PBXProject "Core Animations Lab" */;
 			compatibilityVersion = "Xcode 13.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -254,9 +254,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				848B2C82273999FA00627BB6 /* CoreAnimations */,
-				848B2C98273999FE00627BB6 /* CoreAnimationsTests */,
-				848B2CA2273999FE00627BB6 /* CoreAnimationsUITests */,
+				848B2C82273999FA00627BB6 /* Core Animations Lab */,
+				848B2C98273999FE00627BB6 /* Core Animations LabTests */,
+				848B2CA2273999FE00627BB6 /* Core Animations LabUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -326,12 +326,12 @@
 /* Begin PBXTargetDependency section */
 		848B2C9B273999FE00627BB6 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 848B2C82273999FA00627BB6 /* CoreAnimations */;
+			target = 848B2C82273999FA00627BB6 /* Core Animations Lab */;
 			targetProxy = 848B2C9A273999FE00627BB6 /* PBXContainerItemProxy */;
 		};
 		848B2CA5273999FE00627BB6 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 848B2C82273999FA00627BB6 /* CoreAnimations */;
+			target = 848B2C82273999FA00627BB6 /* Core Animations Lab */;
 			targetProxy = 848B2CA4273999FE00627BB6 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -555,7 +555,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CoreAnimations.app/CoreAnimations";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Core Animations Lab.app/Core Animations Lab";
 			};
 			name = Debug;
 		};
@@ -580,7 +580,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CoreAnimations.app/CoreAnimations";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Core Animations Lab.app/Core Animations Lab";
 			};
 			name = Release;
 		};
@@ -633,7 +633,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		848B2C7E273999FA00627BB6 /* Build configuration list for PBXProject "CoreAnimations" */ = {
+		848B2C7E273999FA00627BB6 /* Build configuration list for PBXProject "Core Animations Lab" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				848B2CAB273999FE00627BB6 /* Debug */,
@@ -642,7 +642,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		848B2CAD273999FE00627BB6 /* Build configuration list for PBXNativeTarget "CoreAnimations" */ = {
+		848B2CAD273999FE00627BB6 /* Build configuration list for PBXNativeTarget "Core Animations Lab" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				848B2CAE273999FE00627BB6 /* Debug */,
@@ -651,7 +651,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		848B2CB0273999FE00627BB6 /* Build configuration list for PBXNativeTarget "CoreAnimationsTests" */ = {
+		848B2CB0273999FE00627BB6 /* Build configuration list for PBXNativeTarget "Core Animations LabTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				848B2CB1273999FE00627BB6 /* Debug */,
@@ -660,7 +660,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		848B2CB3273999FE00627BB6 /* Build configuration list for PBXNativeTarget "CoreAnimationsUITests" */ = {
+		848B2CB3273999FE00627BB6 /* Build configuration list for PBXNativeTarget "Core Animations LabUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				848B2CB4273999FE00627BB6 /* Debug */,
