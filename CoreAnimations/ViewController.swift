@@ -5,17 +5,20 @@ final class ViewController: UIViewController {
     private let image = #imageLiteral(resourceName: "animation")
     private let animations = Animations()
 
+    private lazy var headerLabel = makeHeaderLabel()
+    private lazy var pickerTitleLabel = makePickerTitleLabel()
     private lazy var animationPickerView = makePickerView()
+    private lazy var imageBackgroundView = makeImageBackgroundView()
     private lazy var imageView = makeImageView()
     private lazy var gradientLayer = makeGradientLayer()
     private lazy var shapeLayer = makeShapeLayer()
     private lazy var textLayer = makeTextLayer()
     private lazy var emitterLayer = makeEmitterLayer()
-    private lazy var replicatorLayer = makeReplicatorLayer()
+    private lazy var replicatorLayer = makeReplicatorLayer2()
     private lazy var startAnimationButton = makeButton()
 
     private var animatableViews: [UIView] {
-        [imageView, startAnimationButton]
+        [imageView, imageBackgroundView]
     }
 
     private var layers: [CALayer] {
@@ -42,21 +45,24 @@ final class ViewController: UIViewController {
             return
         }
 
+        let isImageViewHidden = !animations.showsImage(at: currentIndex)
+        let animatedView = isImageViewHidden ? imageBackgroundView : imageView
+        imageView.isHidden = isImageViewHidden
         layers.forEach { $0.removeFromSuperlayer() }
-        animateLayerIfPossible(gradientLayer, animation: animation, keyPaths: Animations.gradientLayerKeyPaths)
-        animateLayerIfPossible(shapeLayer, animation: animation, keyPaths: Animations.shapeLayerKeyPaths)
-        animateLayerIfPossible(textLayer, animation: animation, keyPaths: Animations.textLayerKeyPaths)
-        animateLayerIfPossible(emitterLayer, animation: animation, keyPaths: Animations.emitterLayerKeyPaths)
-        animateLayerIfPossible(replicatorLayer, animation: animation, keyPaths: Animations.replicatorLayerKeyPaths)
+        animateLayerIfPossible(gradientLayer, to: animatedView, animation: animation, keyPaths: Animations.gradientLayerKeyPaths)
+        animateLayerIfPossible(shapeLayer, to: animatedView, animation: animation, keyPaths: Animations.shapeLayerKeyPaths)
+        animateLayerIfPossible(textLayer, to: animatedView, animation: animation, keyPaths: Animations.textLayerKeyPaths)
+        animateLayerIfPossible(emitterLayer, to: animatedView, animation: animation, keyPaths: Animations.emitterLayerKeyPaths)
+        animateLayerIfPossible(replicatorLayer, to: animatedView, animation: animation, keyPaths: Animations.replicatorLayerKeyPaths)
         animatableViews.forEach { $0.layer.add(animation, forKey: animation.keyPath) }
     }
 
-    func animateLayerIfPossible<Layer: CALayer>(_ layer: Layer, animation: CAPropertyAnimation, keyPaths: [String]) {
+    func animateLayerIfPossible<Layer: CALayer>(_ layer: Layer, to view: UIView, animation: CAPropertyAnimation, keyPaths: [String]) {
         guard let keyPath = animation.keyPath, keyPaths.contains(keyPath) else {
             return
         }
 
-        imageView.layer.addSublayer(layer)
+        view.layer.addSublayer(layer)
         layer.removeAllAnimations()
         layer.isHidden = false
         layer.add(animation, forKey: keyPath)
@@ -91,28 +97,49 @@ extension ViewController: UIPickerViewDelegate, UIPickerViewDataSource {
 private extension ViewController {
 
     func addViews() {
-        view.addSubview(animationPickerView)
+        view.addSubview(headerLabel)
+        view.addSubview(imageBackgroundView)
         view.addSubview(imageView)
+        view.addSubview(pickerTitleLabel)
+        view.addSubview(animationPickerView)
         view.addSubview(startAnimationButton)
     }
 
     func addConstraints() {
         NSLayoutConstraint.activate([
-            animationPickerView.topAnchor.constraint(equalTo: view.readableContentGuide.topAnchor, constant: 30),
+            headerLabel.topAnchor.constraint(equalTo: view.readableContentGuide.topAnchor, constant: 24),
+            headerLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            headerLabel.leadingAnchor.constraint(equalTo: view.readableContentGuide.leadingAnchor, constant: 20),
+            headerLabel.trailingAnchor.constraint(equalTo: view.readableContentGuide.trailingAnchor, constant: -20),
+            headerLabel.bottomAnchor.constraint(equalTo: imageView.topAnchor, constant: -24),
+
+            imageBackgroundView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            imageBackgroundView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            imageBackgroundView.leadingAnchor.constraint(equalTo: view.readableContentGuide.leadingAnchor, constant: 20),
+            imageBackgroundView.trailingAnchor.constraint(equalTo: view.readableContentGuide.trailingAnchor, constant: -20),
+            imageBackgroundView.heightAnchor.constraint(equalTo: imageView.widthAnchor),
+
+            imageView.topAnchor.constraint(equalTo: imageBackgroundView.topAnchor),
+            imageView.bottomAnchor.constraint(equalTo: imageBackgroundView.bottomAnchor),
+            imageView.leadingAnchor.constraint(equalTo: imageBackgroundView.leadingAnchor),
+            imageView.trailingAnchor.constraint(equalTo: imageBackgroundView.trailingAnchor),
+
+            pickerTitleLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 30),
+            pickerTitleLabel.leadingAnchor.constraint(equalTo: view.readableContentGuide.leadingAnchor, constant: 32),
+            pickerTitleLabel.trailingAnchor.constraint(equalTo: view.readableContentGuide.trailingAnchor, constant: -20),
+            pickerTitleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            pickerTitleLabel.heightAnchor.constraint(equalToConstant: 20),
+
+            animationPickerView.topAnchor.constraint(equalTo: pickerTitleLabel.bottomAnchor, constant: -24),
             animationPickerView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             animationPickerView.heightAnchor.constraint(equalToConstant: 120),
             animationPickerView.leadingAnchor.constraint(equalTo: view.readableContentGuide.leadingAnchor, constant: 20),
             animationPickerView.trailingAnchor.constraint(equalTo: view.readableContentGuide.trailingAnchor, constant: -20),
 
-            imageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            imageView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            imageView.leadingAnchor.constraint(equalTo: view.readableContentGuide.leadingAnchor, constant: 20),
-            imageView.trailingAnchor.constraint(equalTo: view.readableContentGuide.trailingAnchor, constant: -20),
-            imageView.heightAnchor.constraint(equalTo: imageView.widthAnchor),
-
             startAnimationButton.bottomAnchor.constraint(equalTo: view.readableContentGuide.bottomAnchor, constant: -30),
             startAnimationButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            startAnimationButton.widthAnchor.constraint(equalToConstant: 150),
+            startAnimationButton.leadingAnchor.constraint(equalTo: view.readableContentGuide.leadingAnchor, constant: 29),
+            startAnimationButton.trailingAnchor.constraint(equalTo: view.readableContentGuide.trailingAnchor, constant: -29),
             startAnimationButton.heightAnchor.constraint(equalToConstant: 48)
         ])
     }
@@ -123,6 +150,26 @@ private extension ViewController {
 
 private extension ViewController {
 
+    func makeHeaderLabel() -> UILabel {
+        let label = UILabel()
+        label.text = "Core Animations Lab"
+        label.numberOfLines = 1
+        label.textAlignment = .center
+        label.font = UIFont(name: "Didot", size: 200)
+        label.contentMode = .top
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.adjustsFontSizeToFitWidth = true
+        return label
+    }
+
+    func makePickerTitleLabel() -> UILabel {
+        let label = UILabel()
+        label.text = "Select an animation"
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = .boldSystemFont(ofSize: 16)
+        return label
+    }
+
     func makePickerView() -> UIPickerView {
         let pickerView = UIPickerView()
         pickerView.translatesAutoresizingMaskIntoConstraints = false
@@ -132,12 +179,17 @@ private extension ViewController {
         return pickerView
     }
 
+    func makeImageBackgroundView() -> UIView {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }
+
     func makeImageView() -> UIImageView {
         let imageView = UIImageView(image: image)
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.contentMode = .scaleAspectFit
         imageView.backgroundColor = .yellow
-        imageView.layer.cornerRadius = 10
         imageView.layer.borderWidth = 5
         imageView.layer.borderColor = UIColor.lightGray.cgColor
         imageView.layer.shadowColor = UIColor.black.cgColor
@@ -205,7 +257,7 @@ private extension ViewController {
     func makeTextLayer() -> CATextLayer {
         let layer = CATextLayer()
         layer.string = "Be great"
-        layer.frame = CGRect(x: 20, y: 20, width: 250, height: 80)
+        layer.frame = CGRect(x: 20, y: 20, width: 350, height: 80)
         layer.fontSize = 60
         layer.font = UIFont.boldSystemFont(ofSize: 60)
         layer.foregroundColor = #colorLiteral(red: 0.951250835, green: 0.9686274529, blue: 0.1545007536, alpha: 1).cgColor
@@ -214,13 +266,11 @@ private extension ViewController {
 
     func makeEmitterLayer() -> CAEmitterLayer {
         let layer = CAEmitterLayer()
-        layer.frame = CGRect(x: 20, y: 20, width: 250, height: 80)
-        layer.emitterPosition = CGPoint(x: 320, y: 320)
-        layer.emitterShape = .circle
+        layer.emitterShape = .line
 
         let cell = CAEmitterCell()
         cell.birthRate = 2
-        cell.lifetime = 10
+        cell.lifetime = 1
         cell.velocity = 200
         cell.scale = 0.05
 
@@ -249,16 +299,48 @@ private extension ViewController {
         fadeOut.fromValue = 1
         fadeOut.toValue = 0
         fadeOut.duration = 1
-        fadeOut.repeatCount = Float.greatestFiniteMagnitude
+        fadeOut.repeatCount = 1
         circle.add(fadeOut, forKey: nil)
 
-        let instanceCount = 20
+        let instanceCount = 4
         layer.instanceCount = instanceCount
         layer.instanceRedOffset = 1 / Float(instanceCount)
         layer.instanceDelay = fadeOut.duration / CFTimeInterval(instanceCount)
 
         let angle = -CGFloat.pi * 2 / CGFloat(instanceCount)
         layer.instanceTransform = CATransform3DMakeRotation(angle, 0, 0, 1)
+        return layer
+    }
+
+    func makeReplicatorLayer2() -> CAReplicatorLayer {
+        let layer = CAReplicatorLayer()
+        let width = CGFloat(40)
+        layer.frame = CGRect(
+            origin: CGPoint(x: imageView.bounds.width / 2 - 50, y: imageView.bounds.height / 2 - 50),
+            size: CGSize(width: width * 5, height: width)
+        )
+
+        let circle = CALayer()
+        circle.frame = CGRect(origin: .zero, size: CGSize(width: width, height: width))
+        circle.backgroundColor = #colorLiteral(red: 0.9529411793, green: 0.6862745285, blue: 0.1333333403, alpha: 1).cgColor
+        circle.cornerRadius = 1
+        circle.position = CGPoint(x: 0, y: 50)
+        layer.addSublayer(circle)
+
+        let fadeOut = CABasicAnimation(keyPath: "opacity")
+        fadeOut.fromValue = 1
+        fadeOut.toValue = 0
+        fadeOut.duration = 3
+        fadeOut.repeatCount = .infinity
+        circle.add(fadeOut, forKey: nil)
+
+        let instanceCount = 4
+        layer.instanceCount = instanceCount
+        layer.instanceColor =  #colorLiteral(red: 0.9372549057, green: 0.3490196168, blue: 0.1921568662, alpha: 1).cgColor
+//        layer.instanceRedOffset = 1 / Float(instanceCount)
+        layer.instanceDelay = fadeOut.duration / CFTimeInterval(instanceCount)
+
+        layer.instanceTransform = CATransform3DTranslate(layer.instanceTransform, width + 0.01, 0, 0)//CATransform3DMakeRotation(angle, 0, 0, 1)
         return layer
     }
 

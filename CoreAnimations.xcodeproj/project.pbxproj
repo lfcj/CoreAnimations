@@ -18,6 +18,9 @@
 		848B2CAA273999FE00627BB6 /* CoreAnimationsUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848B2CA9273999FE00627BB6 /* CoreAnimationsUITestsLaunchTests.swift */; };
 		848B2CB72739A3F800627BB6 /* Animations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848B2CB62739A3F800627BB6 /* Animations.swift */; };
 		848B2CBA2748F64700627BB6 /* CATextLayerForegroundColorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848B2CB92748F64700627BB6 /* CATextLayerForegroundColorViewController.swift */; };
+		848B2CBD2749979700627BB6 /* PickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848B2CBC2749979700627BB6 /* PickerViewController.swift */; };
+		84FFFFEB275D7FC000C63D0D /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FFFFEA275D7FC000C63D0D /* UIColor+Extension.swift */; };
+		84FFFFED275D7FD900C63D0D /* CGFloat+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FFFFEC275D7FD900C63D0D /* CGFloat+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +41,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		848A49452778CE9400E141C4 /* Didot.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Didot.ttf; sourceTree = "<group>"; };
 		848B2C83273999FA00627BB6 /* CoreAnimations.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoreAnimations.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		848B2C86273999FA00627BB6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		848B2C88273999FA00627BB6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -54,6 +58,9 @@
 		848B2CB62739A3F800627BB6 /* Animations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animations.swift; sourceTree = "<group>"; };
 		848B2CB82748D98C00627BB6 /* CoreAnimations.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CoreAnimations.entitlements; sourceTree = "<group>"; };
 		848B2CB92748F64700627BB6 /* CATextLayerForegroundColorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CATextLayerForegroundColorViewController.swift; sourceTree = "<group>"; };
+		848B2CBC2749979700627BB6 /* PickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerViewController.swift; sourceTree = "<group>"; };
+		84FFFFEA275D7FC000C63D0D /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
+		84FFFFEC275D7FD900C63D0D /* CGFloat+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGFloat+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +88,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		848A49442778CDC200E141C4 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				848A49452778CE9400E141C4 /* Didot.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
 		848B2C7A273999FA00627BB6 = {
 			isa = PBXGroup;
 			children = (
@@ -104,6 +119,7 @@
 		848B2C85273999FA00627BB6 /* CoreAnimations */ = {
 			isa = PBXGroup;
 			children = (
+				848A49442778CDC200E141C4 /* Fonts */,
 				848B2CBB2749008900627BB6 /* Animation Controllers */,
 				848B2CB82748D98C00627BB6 /* CoreAnimations.entitlements */,
 				848B2C86273999FA00627BB6 /* AppDelegate.swift */,
@@ -114,6 +130,9 @@
 				848B2C91273999FE00627BB6 /* LaunchScreen.storyboard */,
 				848B2C94273999FE00627BB6 /* Info.plist */,
 				848B2CB62739A3F800627BB6 /* Animations.swift */,
+				848B2CBC2749979700627BB6 /* PickerViewController.swift */,
+				84FFFFEA275D7FC000C63D0D /* UIColor+Extension.swift */,
+				84FFFFEC275D7FD900C63D0D /* CGFloat+Extension.swift */,
 			);
 			path = CoreAnimations;
 			sourceTree = "<group>";
@@ -274,6 +293,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84FFFFEB275D7FC000C63D0D /* UIColor+Extension.swift in Sources */,
+				848B2CBD2749979700627BB6 /* PickerViewController.swift in Sources */,
+				84FFFFED275D7FD900C63D0D /* CGFloat+Extension.swift in Sources */,
 				848B2C8B273999FA00627BB6 /* ViewController.swift in Sources */,
 				848B2CBA2748F64700627BB6 /* CATextLayerForegroundColorViewController.swift in Sources */,
 				848B2C87273999FA00627BB6 /* AppDelegate.swift in Sources */,

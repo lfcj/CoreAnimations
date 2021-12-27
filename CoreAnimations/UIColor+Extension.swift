@@ -1,8 +1,12 @@
-//
-//  UIColor+Extension.swift
-//  CoreAnimations
-//
-//  Created by Admin on 06/12/2021.
-//
+import UIKit
 
-import Foundation
+extension UIColor {
+    static func random() -> UIColor {
+        return UIColor(
+           red: .random(),
+           green: .random(),
+           blue: .random(),
+           alpha: 1.0
+        )
+    }
+}
