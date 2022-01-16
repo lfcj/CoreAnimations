@@ -120,7 +120,7 @@ private extension ViewController {
             headerLabel.bottomAnchor.constraint(equalTo: imageView.topAnchor, constant: -24),
 
             imageBackgroundView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            imageBackgroundView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            imageBackgroundView.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -54),
             imageBackgroundView.leadingAnchor.constraint(equalTo: view.readableContentGuide.leadingAnchor, constant: 20),
             imageBackgroundView.trailingAnchor.constraint(equalTo: view.readableContentGuide.trailingAnchor, constant: -20),
             imageBackgroundView.heightAnchor.constraint(equalTo: imageView.widthAnchor),
@@ -135,7 +135,7 @@ private extension ViewController {
             pickerTitleLabel.heightAnchor.constraint(equalToConstant: 20),
             pickerTitleLabel.widthAnchor.constraint(lessThanOrEqualToConstant: 180),
 
-            animationPickerView.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 16),
+            animationPickerView.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 24),
             animationPickerView.leadingAnchor.constraint(equalTo: pickerTitleLabel.trailingAnchor, constant: 16),
             animationPickerView.trailingAnchor.constraint(equalTo: view.readableContentGuide.trailingAnchor, constant: -20),
             animationPickerView.heightAnchor.constraint(equalToConstant: 80),
@@ -168,6 +168,8 @@ private extension ViewController {
         label.contentMode = .top
         label.translatesAutoresizingMaskIntoConstraints = false
         label.adjustsFontSizeToFitWidth = true
+        label.adjustsFontForContentSizeCategory = true
+        label.baselineAdjustment = .alignCenters
         return label
     }
 
