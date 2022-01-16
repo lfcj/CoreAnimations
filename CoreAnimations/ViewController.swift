@@ -130,17 +130,15 @@ private extension ViewController {
             imageView.leadingAnchor.constraint(equalTo: imageBackgroundView.leadingAnchor),
             imageView.trailingAnchor.constraint(equalTo: imageBackgroundView.trailingAnchor),
 
-            pickerTitleLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 30),
+            pickerTitleLabel.centerYAnchor.constraint(equalTo: animationPickerView.centerYAnchor),
             pickerTitleLabel.leadingAnchor.constraint(equalTo: view.readableContentGuide.leadingAnchor, constant: 32),
-            pickerTitleLabel.trailingAnchor.constraint(equalTo: view.readableContentGuide.trailingAnchor, constant: -20),
-            pickerTitleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             pickerTitleLabel.heightAnchor.constraint(equalToConstant: 20),
+            pickerTitleLabel.widthAnchor.constraint(lessThanOrEqualToConstant: 180),
 
-            animationPickerView.topAnchor.constraint(equalTo: pickerTitleLabel.bottomAnchor, constant: -24),
-            animationPickerView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            animationPickerView.heightAnchor.constraint(equalToConstant: 120),
-            animationPickerView.leadingAnchor.constraint(equalTo: view.readableContentGuide.leadingAnchor, constant: 20),
+            animationPickerView.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 16),
+            animationPickerView.leadingAnchor.constraint(equalTo: pickerTitleLabel.trailingAnchor, constant: 16),
             animationPickerView.trailingAnchor.constraint(equalTo: view.readableContentGuide.trailingAnchor, constant: -20),
+            animationPickerView.heightAnchor.constraint(equalToConstant: 80),
 
             startAnimationButton.bottomAnchor.constraint(equalTo: seeCodeButton.topAnchor, constant: -8),
             startAnimationButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
@@ -152,7 +150,6 @@ private extension ViewController {
             seeCodeButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             seeCodeButton.leadingAnchor.constraint(equalTo: view.readableContentGuide.leadingAnchor, constant: 29),
             seeCodeButton.trailingAnchor.constraint(equalTo: view.readableContentGuide.trailingAnchor, constant: -29),
-            seeCodeButton.heightAnchor.constraint(equalToConstant: 48),
         ])
     }
 
@@ -176,7 +173,7 @@ private extension ViewController {
 
     func makePickerTitleLabel() -> UILabel {
         let label = UILabel()
-        label.text = "Select an animation"
+        label.text = "Select an animation:"
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = .boldSystemFont(ofSize: 16)
         return label
