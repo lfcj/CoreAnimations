@@ -15,7 +15,8 @@ final class ViewController: UIViewController {
     private lazy var textLayer = makeTextLayer()
     private lazy var emitterLayer = makeEmitterLayer()
     private lazy var replicatorLayer = makeReplicatorLayer2()
-    private lazy var startAnimationButton = makeButton()
+    private lazy var startAnimationButton = makeStartAnimationButton()
+    private lazy var seeCodeButton = makeCodeButton()
 
     private var animatableViews: [UIView] {
         [imageView, imageBackgroundView]
@@ -55,6 +56,10 @@ final class ViewController: UIViewController {
         animateLayerIfPossible(emitterLayer, to: animatedView, animation: animation, keyPaths: Animations.emitterLayerKeyPaths)
         animateLayerIfPossible(replicatorLayer, to: animatedView, animation: animation, keyPaths: Animations.replicatorLayerKeyPaths)
         animatableViews.forEach { $0.layer.add(animation, forKey: animation.keyPath) }
+    }
+
+    @objc private func showCode() {
+        
     }
 
     func animateLayerIfPossible<Layer: CALayer>(_ layer: Layer, to view: UIView, animation: CAPropertyAnimation, keyPaths: [String]) {
@@ -103,6 +108,7 @@ private extension ViewController {
         view.addSubview(pickerTitleLabel)
         view.addSubview(animationPickerView)
         view.addSubview(startAnimationButton)
+        view.addSubview(seeCodeButton)
     }
 
     func addConstraints() {
@@ -136,11 +142,17 @@ private extension ViewController {
             animationPickerView.leadingAnchor.constraint(equalTo: view.readableContentGuide.leadingAnchor, constant: 20),
             animationPickerView.trailingAnchor.constraint(equalTo: view.readableContentGuide.trailingAnchor, constant: -20),
 
-            startAnimationButton.bottomAnchor.constraint(equalTo: view.readableContentGuide.bottomAnchor, constant: -30),
+            startAnimationButton.bottomAnchor.constraint(equalTo: seeCodeButton.topAnchor, constant: -8),
             startAnimationButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             startAnimationButton.leadingAnchor.constraint(equalTo: view.readableContentGuide.leadingAnchor, constant: 29),
             startAnimationButton.trailingAnchor.constraint(equalTo: view.readableContentGuide.trailingAnchor, constant: -29),
-            startAnimationButton.heightAnchor.constraint(equalToConstant: 48)
+            startAnimationButton.heightAnchor.constraint(equalToConstant: 48),
+
+            seeCodeButton.bottomAnchor.constraint(equalTo: view.readableContentGuide.bottomAnchor, constant: -30),
+            seeCodeButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            seeCodeButton.leadingAnchor.constraint(equalTo: view.readableContentGuide.leadingAnchor, constant: 29),
+            seeCodeButton.trailingAnchor.constraint(equalTo: view.readableContentGuide.trailingAnchor, constant: -29),
+            seeCodeButton.heightAnchor.constraint(equalToConstant: 48),
         ])
     }
 
@@ -344,7 +356,7 @@ private extension ViewController {
         return layer
     }
 
-    func makeButton() -> UIButton {
+    func makeStartAnimationButton() -> UIButton {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("Start animation", for: .normal)
@@ -356,4 +368,15 @@ private extension ViewController {
         button.layer.borderColor = UIColor.lightGray.cgColor
         return button
     }
+
+    func makeCodeButton() -> UIButton {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setTitle("Show animation code", for: .normal)
+        button.addTarget(self, action: #selector(showCode), for: .touchUpInside)
+        button.setTitleColor(.secondaryLabel, for: .normal)
+        button.setTitleColor(.systemPurple, for: .normal)
+        return button
+    }
+
 }
