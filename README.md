@@ -56,6 +56,7 @@ All properties can be found [here](https:developer.apple.comlibraryarchivedocume
 - [x] instanceTransform
 - [x] instanceColor
 - [x] instanceRedOffset
+- [x] instanceGreenOffset
 
 ### CATransform3D
 
@@ -77,7 +78,6 @@ All properties can be found [here](https:developer.apple.comlibraryarchivedocume
 - [ ] Add masksToBounds animation
 - [ ] Add sublayers animation
 - [ ] Add sublayerTransform animation
-- [ ] Add instanceGreenOffset animation
 - [ ] Add instanceBlueOffset animation
 - [ ] Add UI to show current animation properties
 - [ ] Add UI to be able to change current animation properties
