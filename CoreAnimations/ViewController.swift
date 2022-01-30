@@ -14,7 +14,7 @@ final class ViewController: UIViewController {
     private lazy var shapeLayer = makeShapeLayer()
     private lazy var textLayer = makeTextLayer()
     private lazy var emitterLayer = makeEmitterLayer()
-    private lazy var replicatorLayer = makeReplicatorLayer2()
+    private lazy var replicatorLayer = makeReplicatorLayer()
     private lazy var startAnimationButton = makeStartAnimationButton()
     private lazy var seeCodeButton = makeCodeButton()
 
@@ -29,6 +29,7 @@ final class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        
         addViews()
         addConstraints()
     }
@@ -59,7 +60,9 @@ final class ViewController: UIViewController {
     }
 
     @objc private func showCode() {
-        
+        let codeViewController = CodeViewController()
+        codeViewController.modalPresentationStyle = .formSheet
+        present(codeViewController, animated: false)
     }
 
     func animateLayerIfPossible<Layer: CALayer>(_ layer: Layer, to view: UIView, animation: CAPropertyAnimation, keyPaths: [String]) {
@@ -115,14 +118,14 @@ private extension ViewController {
         NSLayoutConstraint.activate([
             headerLabel.topAnchor.constraint(equalTo: view.readableContentGuide.topAnchor, constant: 24),
             headerLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            headerLabel.leadingAnchor.constraint(equalTo: view.readableContentGuide.leadingAnchor, constant: 20),
-            headerLabel.trailingAnchor.constraint(equalTo: view.readableContentGuide.trailingAnchor, constant: -20),
+            headerLabel.leadingAnchor.constraint(equalTo: view.readableContentGuide.leadingAnchor),
+            headerLabel.trailingAnchor.constraint(equalTo: view.readableContentGuide.trailingAnchor),
             headerLabel.bottomAnchor.constraint(equalTo: imageView.topAnchor, constant: -24),
 
             imageBackgroundView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             imageBackgroundView.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -54),
-            imageBackgroundView.leadingAnchor.constraint(equalTo: view.readableContentGuide.leadingAnchor, constant: 20),
-            imageBackgroundView.trailingAnchor.constraint(equalTo: view.readableContentGuide.trailingAnchor, constant: -20),
+            imageBackgroundView.leadingAnchor.constraint(equalTo: view.readableContentGuide.leadingAnchor),
+            imageBackgroundView.trailingAnchor.constraint(equalTo: view.readableContentGuide.trailingAnchor),
             imageBackgroundView.heightAnchor.constraint(equalTo: imageView.widthAnchor),
 
             imageView.topAnchor.constraint(equalTo: imageBackgroundView.topAnchor),
@@ -131,26 +134,29 @@ private extension ViewController {
             imageView.trailingAnchor.constraint(equalTo: imageBackgroundView.trailingAnchor),
 
             pickerTitleLabel.centerYAnchor.constraint(equalTo: animationPickerView.centerYAnchor),
-            pickerTitleLabel.leadingAnchor.constraint(equalTo: view.readableContentGuide.leadingAnchor, constant: 32),
+            pickerTitleLabel.leadingAnchor.constraint(equalTo: view.readableContentGuide.leadingAnchor),
             pickerTitleLabel.heightAnchor.constraint(equalToConstant: 20),
-            pickerTitleLabel.widthAnchor.constraint(lessThanOrEqualToConstant: 180),
+//            pickerTitleLabel.widthAnchor.constraint(lessThanOrEqualToConstant: 180),
 
             animationPickerView.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 24),
-            animationPickerView.leadingAnchor.constraint(equalTo: pickerTitleLabel.trailingAnchor, constant: 16),
-            animationPickerView.trailingAnchor.constraint(equalTo: view.readableContentGuide.trailingAnchor, constant: -20),
+            animationPickerView.leadingAnchor.constraint(equalTo: pickerTitleLabel.trailingAnchor, constant: 8),
+            animationPickerView.trailingAnchor.constraint(equalTo: view.readableContentGuide.trailingAnchor),
             animationPickerView.heightAnchor.constraint(equalToConstant: 80),
 
             startAnimationButton.bottomAnchor.constraint(equalTo: seeCodeButton.topAnchor, constant: -8),
             startAnimationButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            startAnimationButton.leadingAnchor.constraint(equalTo: view.readableContentGuide.leadingAnchor, constant: 29),
-            startAnimationButton.trailingAnchor.constraint(equalTo: view.readableContentGuide.trailingAnchor, constant: -29),
+            startAnimationButton.leadingAnchor.constraint(equalTo: view.readableContentGuide.leadingAnchor),
+            startAnimationButton.trailingAnchor.constraint(equalTo: view.readableContentGuide.trailingAnchor),
             startAnimationButton.heightAnchor.constraint(equalToConstant: 48),
 
             seeCodeButton.bottomAnchor.constraint(equalTo: view.readableContentGuide.bottomAnchor, constant: -30),
             seeCodeButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            seeCodeButton.leadingAnchor.constraint(equalTo: view.readableContentGuide.leadingAnchor, constant: 29),
-            seeCodeButton.trailingAnchor.constraint(equalTo: view.readableContentGuide.trailingAnchor, constant: -29),
+            seeCodeButton.leadingAnchor.constraint(equalTo: view.readableContentGuide.leadingAnchor),
+            seeCodeButton.trailingAnchor.constraint(equalTo: view.readableContentGuide.trailingAnchor),
         ])
+
+        pickerTitleLabel.setContentHuggingPriority(.required, for: .horizontal)
+        animationPickerView.largeContentTitle = "This is a test"
     }
 
 }
@@ -294,64 +300,32 @@ private extension ViewController {
 
     func makeReplicatorLayer() -> CAReplicatorLayer {
         let layer = CAReplicatorLayer()
-        layer.frame = CGRect(
-            origin: CGPoint(x: imageView.bounds.width / 2 - 50, y: imageView.bounds.height / 2 - 50),
-            size: CGSize(width: 100, height: 100)
-        )
-
-        let circle = CALayer()
-        circle.frame = CGRect(origin: .zero, size: CGSize(width: 10, height: 10))
-        circle.backgroundColor = #colorLiteral(red: 0.9450980392, green: 0.9098039216, blue: 0, alpha: 1).cgColor
-        circle.cornerRadius = 5
-        circle.position = CGPoint(x: 0, y: 50)
-        layer.addSublayer(circle)
-
-        let fadeOut = CABasicAnimation(keyPath: "opacity")
-        fadeOut.fromValue = 1
-        fadeOut.toValue = 0
-        fadeOut.duration = 1
-        fadeOut.repeatCount = 1
-        circle.add(fadeOut, forKey: nil)
-
-        let instanceCount = 4
-        layer.instanceCount = instanceCount
-        layer.instanceRedOffset = 1 / Float(instanceCount)
-        layer.instanceDelay = fadeOut.duration / CFTimeInterval(instanceCount)
-
-        let angle = -CGFloat.pi * 2 / CGFloat(instanceCount)
-        layer.instanceTransform = CATransform3DMakeRotation(angle, 0, 0, 1)
-        return layer
-    }
-
-    func makeReplicatorLayer2() -> CAReplicatorLayer {
-        let layer = CAReplicatorLayer()
         let width = CGFloat(40)
         layer.frame = CGRect(
-            origin: CGPoint(x: imageView.bounds.width / 2 - 50, y: imageView.bounds.height / 2 - 50),
-            size: CGSize(width: width * 5, height: width)
+            origin: CGPoint(x: imageView.bounds.width / 2 - width, y: imageView.bounds.height / 2 ),
+            size: CGSize(width: width * 4, height: width)
         )
 
         let circle = CALayer()
         circle.frame = CGRect(origin: .zero, size: CGSize(width: width, height: width))
-        circle.backgroundColor = #colorLiteral(red: 0.9529411793, green: 0.6862745285, blue: 0.1333333403, alpha: 1).cgColor
+        circle.backgroundColor = #colorLiteral(red: 0.5568627715, green: 0.3529411852, blue: 0.9686274529, alpha: 1).cgColor
         circle.cornerRadius = 1
-        circle.position = CGPoint(x: 0, y: 50)
+        circle.position = CGPoint(x: 0, y: 0)
         layer.addSublayer(circle)
 
         let fadeOut = CABasicAnimation(keyPath: "opacity")
         fadeOut.fromValue = 1
         fadeOut.toValue = 0
-        fadeOut.duration = 3
-        fadeOut.repeatCount = .infinity
+        fadeOut.duration = 0.5
+        fadeOut.repeatCount = 10
         circle.add(fadeOut, forKey: nil)
 
         let instanceCount = 4
         layer.instanceCount = instanceCount
-        layer.instanceColor =  #colorLiteral(red: 0.9372549057, green: 0.3490196168, blue: 0.1921568662, alpha: 1).cgColor
-//        layer.instanceRedOffset = 1 / Float(instanceCount)
-        layer.instanceDelay = fadeOut.duration / CFTimeInterval(instanceCount)
+        layer.instanceColor =  #colorLiteral(red: 0.5568627715, green: 0.3529411852, blue: 0.9686274529, alpha: 1).cgColor
+        layer.instanceDelay = 1 / CFTimeInterval(instanceCount)
 
-        layer.instanceTransform = CATransform3DTranslate(layer.instanceTransform, width + 0.01, 0, 0)//CATransform3DMakeRotation(angle, 0, 0, 1)
+        layer.instanceTransform = CATransform3DTranslate(layer.instanceTransform, width + 4, 0, 0)
         return layer
     }
 
@@ -373,7 +347,6 @@ private extension ViewController {
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("Show animation code", for: .normal)
         button.addTarget(self, action: #selector(showCode), for: .touchUpInside)
-        button.setTitleColor(.secondaryLabel, for: .normal)
         button.setTitleColor(.systemPurple, for: .normal)
         return button
     }

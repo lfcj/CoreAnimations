@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8414D0632794BB7900DD8241 /* CodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8414D0622794BB7900DD8241 /* CodeViewController.swift */; };
 		848B2C87273999FA00627BB6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848B2C86273999FA00627BB6 /* AppDelegate.swift */; };
 		848B2C89273999FA00627BB6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848B2C88273999FA00627BB6 /* SceneDelegate.swift */; };
 		848B2C8B273999FA00627BB6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848B2C8A273999FA00627BB6 /* ViewController.swift */; };
@@ -41,6 +42,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8414D0622794BB7900DD8241 /* CodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeViewController.swift; sourceTree = "<group>"; };
 		848A49452778CE9400E141C4 /* Didot.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Didot.ttf; sourceTree = "<group>"; };
 		848B2C83273999FA00627BB6 /* Core Animations Lab.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Core Animations Lab.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		848B2C86273999FA00627BB6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -133,6 +135,7 @@
 				848B2CBC2749979700627BB6 /* PickerViewController.swift */,
 				84FFFFEA275D7FC000C63D0D /* UIColor+Extension.swift */,
 				84FFFFEC275D7FD900C63D0D /* CGFloat+Extension.swift */,
+				8414D0622794BB7900DD8241 /* CodeViewController.swift */,
 			);
 			path = CoreAnimations;
 			sourceTree = "<group>";
@@ -299,6 +302,7 @@
 				848B2C8B273999FA00627BB6 /* ViewController.swift in Sources */,
 				848B2CBA2748F64700627BB6 /* CATextLayerForegroundColorViewController.swift in Sources */,
 				848B2C87273999FA00627BB6 /* AppDelegate.swift in Sources */,
+				8414D0632794BB7900DD8241 /* CodeViewController.swift in Sources */,
 				848B2CB72739A3F800627BB6 /* Animations.swift in Sources */,
 				848B2C89273999FA00627BB6 /* SceneDelegate.swift in Sources */,
 			);

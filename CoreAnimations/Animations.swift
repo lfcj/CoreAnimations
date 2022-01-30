@@ -19,7 +19,7 @@ struct Animations {
     ]
     static let textLayerKeyPaths = ["fontSize", "foregroundColor"]
     static let emitterLayerKeyPaths = ["emitterPosition", "emitterPosition.x", "emitterPosition.y", "emitterSize", "emitterSize.width"]
-    static let replicatorLayerKeyPaths = ["instanceDelay", "instanceTransform", "instanceRedOffset", "instanceColor"]
+    static let replicatorLayerKeyPaths = ["instanceDelay", "instanceTransform", "instanceRedOffset", "instanceGreenOffset", "instanceColor"]
 
     enum Kind {
         case keyframe
@@ -154,12 +154,12 @@ struct Animations {
         Properties("fontSize", [20, 40, 80, 70, 60], duration: 1, repetitions: 1),
         Properties("foregroundColor",  [#colorLiteral(red: 0.9254902005, green: 0.2352941185, blue: 0.1019607857, alpha: 1).cgColor, #colorLiteral(red: 0.9529411793, green: 0.6862745285, blue: 0.1333333403, alpha: 1).cgColor, #colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1).cgColor]),
         // CAEmitterLayer
-        Properties("emitterPosition", [CGPoint(x: 300, y: 600), CGPoint(x: 0.1, y: 0.1), CGPoint(x: 80, y: 50)]), // fix
-        Properties("emitterPosition.x", [200, 500, 0, 100]), // fix
-        Properties("emitterPosition.y", [0, 100, 200, 300, 400, 500, 600]), // fix
-        Properties("emitterSize", [CGSize(width: 20, height: 40), CGSize(width: 200, height: 400), CGSize(width: 4, height: 12)]), //fix
+        //Properties("emitterPosition", [CGPoint(x: 300, y: 600), CGPoint(x: 0.1, y: 0.1), CGPoint(x: 80, y: 50)]), // TODO
+        //Properties("emitterPosition.x", [200, 500, 0, 100]), // TODO
+        //Properties("emitterPosition.y", [0, 100, 200, 300, 400, 500, 600]), // TODO
+        //Properties("emitterSize", [CGSize(width: 20, height: 40), CGSize(width: 200, height: 400), CGSize(width: 4, height: 12)]), //TODO
         // CAReplicatorLayer
-        Properties("instanceDelay", stride(from: 10, to: 1000, by: 5).map { 1 / $0 }, duration: 1),
+        Properties("instanceDelay", stride(from: 10, to: 1000, by: 5).map { 1 / $0 }, duration: 1, showsImage: false),
         Properties(
             "instanceTransform",
             [
@@ -172,19 +172,21 @@ struct Animations {
                 CATransform3DMakeRotation(-CGFloat.pi * 2 / CGFloat(20), 1, 0, 1),
                 CATransform3DMakeRotation(-CGFloat.pi * 2 / CGFloat(20), 0, 1, 1),
             ],
-            duration: 3
+            duration: 3,
+            showsImage: false
         ),
-        Properties("instanceColor", [UIColor.yellow.cgColor, UIColor.green.cgColor, UIColor.purple.cgColor], duration: 2),
-        Properties("instanceRedOffset", stride(from: 1, to: 100, by: 1).map { 1 / $0 }, duration: 1), //TODO
+        Properties("instanceColor", [UIColor.yellow.cgColor, UIColor.green.cgColor, UIColor.purple.cgColor], duration: 2, showsImage: false),
+        Properties("instanceRedOffset", stride(from: 1, to: 100, by: 1).map { 1 / $0 }, duration: 2, showsImage: false),
+        Properties("instanceGreenOffset", stride(from: 1, to: 100, by: 1).map { 1 / $0 }, duration: 2, showsImage: false),
         // CATransform3D
         Properties("transform.scale.x", [1.0, 1.2, 1.0]),
         Properties("transform.scale.y", [1.0, 1.2, 1.0]),
-        Properties("transform.scale.z", [1.0, 1.2, 1.0]), // TODO
+        //Properties("transform.scale.z", [1.0, 1.2, 1.0]), // TODO
         Properties("transform.scale", [1.0, 1.2, 1.0]),
         Properties("transform.translation.x", [50.0, 20, 100]),
         Properties("transform.translation.y", [50.0, 20, 100]),
         Properties("transform.translation.z", [50.0, 20, 100]),
-        Properties("transform.translation", [50.0, 20, 50]), // TODO
+        //Properties("transform.translation", [50.0, 20, 50]), // TODO
         Properties("transform.rotation.y", [1.0, 1.5, 1.0]),
         Properties("transform.rotation.x", [1.0, 1.5, 1.0]),
         Properties("transform.rotation.z", [1.0, 1.5, 1.0]),
