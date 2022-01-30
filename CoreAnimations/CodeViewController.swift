@@ -59,17 +59,7 @@ private extension CodeViewController {
         textView.backgroundColor = .lightGray.withAlphaComponent(0.1)
         textView.translatesAutoresizingMaskIntoConstraints = false
 
-        let text =
-"""
-let gradient = CAGradientLayer()
-gradient.frame = imageView.bounds
-gradient.colors = [#colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1).cgColor, #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1).cgColor , #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1).cgColor]
-gradient.startPoint = CGPoint(x: 0, y: 0)
-gradient.endPoint = CGPoint(x: 1, y: 1)
-gradient.locations =  [0, 0.5, 1]
-return gradient
-"""
-        let attributedText = NSAttributedString(string: text, attributes: textFontAttributes)
+        let attributedText = NSAttributedString(string: code, attributes: textFontAttributes)
         textView.attributedText = attributedText
         textView.layer.cornerRadius = 4
         return textView
