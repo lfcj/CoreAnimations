@@ -35,6 +35,7 @@ struct Animations {
         let repetitions: Float
         let autoreverses: Bool
         let showsImage: Bool
+        let masksToBounds: Bool
 
         init(
             _ keyPath: KeyPath,
@@ -44,7 +45,8 @@ struct Animations {
             kind: Kind = .keyframe,
             repetitions: Float = 1,
             autoreverses: Bool = false,
-            showsImage: Bool = true
+            showsImage: Bool = true,
+            masksToBounds: Bool = true
         ) {
             self.keyPath = keyPath
             self.values = values
@@ -54,6 +56,7 @@ struct Animations {
             self.repetitions = repetitions
             self.autoreverses = autoreverses
             self.showsImage = showsImage
+            self.masksToBounds = masksToBounds
         }
     }
 
@@ -106,9 +109,14 @@ struct Animations {
             ],
             duration: 2
         ),
-        Properties("shadowColor", [#colorLiteral(red: 0.9254902005, green: 0.2352941185, blue: 0.1019607857, alpha: 1).cgColor, #colorLiteral(red: 0.9529411793, green: 0.6862745285, blue: 0.1333333403, alpha: 1).cgColor, #colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1).cgColor]),
-        Properties("shadowOffset", [CGSize(width: -20, height: -40), CGSize(width: 20, height: 40), CGSize(width: -4, height: -12)], duration: 2),
-        Properties("shadowOpacity", [0.1, 0.5, 1], duration: 0.7),
+        Properties("shadowColor", [#colorLiteral(red: 0.9254902005, green: 0.2352941185, blue: 0.1019607857, alpha: 1).cgColor, #colorLiteral(red: 0.9529411793, green: 0.6862745285, blue: 0.1333333403, alpha: 1).cgColor, #colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1).cgColor], masksToBounds: false),
+        Properties(
+            "shadowOffset",
+            [CGSize(width: -20, height: -40), CGSize(width: 20, height: 40), CGSize(width: -4, height: -12)],
+            duration: 2,
+            masksToBounds: false
+        ),
+        Properties("shadowOpacity", [0.1, 0.5, 1], duration: 0.7, masksToBounds: false),
         Properties(
             "shadowPath",
             [
@@ -124,9 +132,10 @@ struct Animations {
                 ).cgPath,
                 UIBezierPath(rect: .zero).cgPath
             ],
-            duration: 1.5
+            duration: 1.5,
+            masksToBounds: false
         ),
-        Properties("shadowRadius", [20, 40, 100]),
+        Properties("shadowRadius", [20, 40, 100], masksToBounds: false),
 //        Properties("zPosition", [-5, 20, 5], duration: 1.2), TODO
         // CAGradientLayer
         Properties(
@@ -221,6 +230,14 @@ struct Animations {
         }
 
         return properties[index].showsImage
+    }
+
+    func masksToBounds(at index: Int) -> Bool {
+        guard index < count else {
+            return true
+        }
+
+        return properties[index].masksToBounds
     }
 
     func makeAnimation(properties: Properties) -> CAKeyframeAnimation {

@@ -50,6 +50,7 @@ final class ViewController: UIViewController {
         let isImageViewHidden = !animations.showsImage(at: currentIndex)
         let animatedView = isImageViewHidden ? imageBackgroundView : imageView
         imageView.isHidden = isImageViewHidden
+        imageView.layer.masksToBounds = animations.masksToBounds(at: currentIndex)
         layers.forEach { $0.removeFromSuperlayer() }
         animateLayerIfPossible(gradientLayer, to: animatedView, animation: animation, keyPaths: Animations.gradientLayerKeyPaths)
         animateLayerIfPossible(shapeLayer, to: animatedView, animation: animation, keyPaths: Animations.shapeLayerKeyPaths)
@@ -216,7 +217,7 @@ private extension ViewController {
         imageView.layer.shouldRasterize = true
         imageView.layer.rasterizationScale = UIScreen.main.scale
         imageView.clipsToBounds = true
-        imageView.layer.masksToBounds = false
+        imageView.layer.masksToBounds = true
 
 //        let background = CATextLayer()
 //        background.string = "background"
