@@ -69,6 +69,8 @@ All properties can be found [here](https:developer.apple.comlibraryarchivedocume
 - [ ] Replicator layer animations are not deterministic, the opacity animation works depending on the first replicator animation that is played.
 - [ ] transform.scale.z and transform.translation.z do not work.
 - [ ] The emitter layer does not stop emitting.
+- [ ] Add `emitterPosition` 
+- [ ] Add `emitterSize`
 - [ ] Add animation zPosition
 - [ ] Add backgroundFilters animation
 - [ ] Add compositingFilter animation
