@@ -61,7 +61,7 @@ final class ViewController: UIViewController {
     }
 
     @objc private func showCode() {
-        let codeViewController = CodeViewController()
+        let codeViewController = CodeViewController(code: "test")
         codeViewController.modalPresentationStyle = .formSheet
         present(codeViewController, animated: false)
     }
