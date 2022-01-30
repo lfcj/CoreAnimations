@@ -61,7 +61,8 @@ final class ViewController: UIViewController {
     }
 
     @objc private func showCode() {
-        let codeViewController = CodeViewController(code: "test")
+        let currentIndex = animationPickerView.selectedRow(inComponent: 0)
+        let codeViewController = CodeViewController(code: animations.code(at: currentIndex))
         codeViewController.modalPresentationStyle = .formSheet
         present(codeViewController, animated: false)
     }
@@ -137,7 +138,6 @@ private extension ViewController {
             pickerTitleLabel.centerYAnchor.constraint(equalTo: animationPickerView.centerYAnchor),
             pickerTitleLabel.leadingAnchor.constraint(equalTo: view.readableContentGuide.leadingAnchor),
             pickerTitleLabel.heightAnchor.constraint(equalToConstant: 20),
-//            pickerTitleLabel.widthAnchor.constraint(lessThanOrEqualToConstant: 180),
 
             animationPickerView.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 24),
             animationPickerView.leadingAnchor.constraint(equalTo: pickerTitleLabel.trailingAnchor, constant: 8),
@@ -157,7 +157,6 @@ private extension ViewController {
         ])
 
         pickerTitleLabel.setContentHuggingPriority(.required, for: .horizontal)
-        animationPickerView.largeContentTitle = "This is a test"
     }
 
 }

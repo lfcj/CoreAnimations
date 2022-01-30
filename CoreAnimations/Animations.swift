@@ -240,6 +240,36 @@ struct Animations {
         return properties[index].masksToBounds
     }
 
+    func code(at index: Int) -> String {
+        guard index < properties.count else {
+            return "No animation at index: \(index)"
+        }
+
+        let property = properties[index]
+        switch property.kind {
+        case .basic:
+            return
+"""
+let animation = CABasicAnimation(keyPath: \(property.keyPath))
+animation.fromValue = \(String(describing: property.values.first))
+animation.toValue = \(String(describing: property.values.last))
+animation.duration = \(property.duration)
+animation.repeatCount = \(property.repetitions)
+return animation
+"""
+        case .keyframe:
+            return
+"""
+let animation = CAKeyframeAnimation(keyPath: \(property.keyPath))
+animation.values = \(property.values)
+animation.keyTimes = \(property.keyTimes)
+animation.duration = \(property.duration)
+animation.repeatCount = \(property.repetitions)
+return animation
+"""
+        }
+    }
+
     func makeAnimation(properties: Properties) -> CAKeyframeAnimation {
         let animation = CAKeyframeAnimation(keyPath: properties.keyPath)
         animation.values = properties.values
