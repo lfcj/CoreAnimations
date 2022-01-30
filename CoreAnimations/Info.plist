@@ -6,12 +6,10 @@
 	<array>
 		<string>Fonts/Didot.ttf</string>
 	</array>
-	<key>CFBundleDisplayName</key>
-	<string>Core Animations Lab</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
-		<false/>
+		<true/>
 		<key>UISceneConfigurations</key>
 		<dict>
 			<key>UIWindowSceneSessionRoleApplication</key>

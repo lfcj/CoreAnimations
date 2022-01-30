@@ -487,6 +487,7 @@
 				DEVELOPMENT_TEAM = G7YAMEJH7M;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CoreAnimations/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Core Animations Lab";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -519,6 +520,7 @@
 				DEVELOPMENT_TEAM = G7YAMEJH7M;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CoreAnimations/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Core Animations Lab";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
