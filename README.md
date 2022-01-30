@@ -2,6 +2,8 @@
 Let us learn all of CALayer properties by animating Leonardo Fibonacci.
 The goal is to be able to see a quick working demo of any Core Animation.
 
+![App demo gif][1]
+
 All properties can be found [here](https:developer.apple.comlibraryarchivedocumentationCocoaConceptualCoreAnimation_guideAnimatablePropertiesAnimatableProperties.html).
 
 ## List of demoed animations
@@ -83,3 +85,5 @@ All properties can be found [here](https:developer.apple.comlibraryarchivedocume
 - [ ] Add instanceBlueOffset animation
 - [x] Add UI to show current animation properties
 - [ ] Add UI to be able to change current animation properties
+
+[1]: /Docs/app-demo.gif
