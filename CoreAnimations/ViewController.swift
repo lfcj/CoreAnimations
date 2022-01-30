@@ -335,11 +335,12 @@ private extension ViewController {
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("Start animation", for: .normal)
         button.addTarget(self, action: #selector(animate), for: .touchUpInside)
-        button.setTitleColor(.secondaryLabel, for: .normal)
-        button.backgroundColor = .secondarySystemBackground
+        button.setTitleColor(.white, for: .normal)
         button.setTitleColor(.systemGreen, for: .highlighted)
+        button.backgroundColor = .darkGray
         button.layer.borderWidth = 5
-        button.layer.borderColor = UIColor.lightGray.cgColor
+        button.layer.borderColor = UIColor.darkGray.cgColor
+        button.layer.cornerRadius = 8
         return button
     }
 
