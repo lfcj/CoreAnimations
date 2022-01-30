@@ -71,6 +71,7 @@ return gradient
 """
         let attributedText = NSAttributedString(string: text, attributes: textFontAttributes)
         textView.attributedText = attributedText
+        textView.layer.cornerRadius = 4
         return textView
     }
 
@@ -98,7 +99,7 @@ return gradient
         NSLayoutConstraint.activate([
             closeButton.heightAnchor.constraint(equalToConstant: 48),
             closeButton.widthAnchor.constraint(equalToConstant: 48),
-            closeButton.leadingAnchor.constraint(equalTo: view.readableContentGuide.leadingAnchor),
+            closeButton.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             closeButton.topAnchor.constraint(equalTo: view.readableContentGuide.topAnchor),
 
             codeTextView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
