@@ -66,8 +66,8 @@ All properties can be found [here](https:developer.apple.comlibraryarchivedocume
 
 ## LIST OF TODOs
 
-- [ ] Replicator layer animations are not deterministic, the opacity animation works depending on the first replicator animation that is played.
-- [ ] transform.scale.z and transform.translation.z do not work.
+- [ ] Fix replicator layer animations are not deterministic, the opacity animation works depending on the first replicator animation that is played.
+- [ ] Add transform.scale.z and transform.translation.z
 - [ ] The emitter layer does not stop emitting.
 - [ ] Add `emitterPosition` 
 - [ ] Add `emitterSize`
@@ -81,5 +81,5 @@ All properties can be found [here](https:developer.apple.comlibraryarchivedocume
 - [ ] Add sublayers animation
 - [ ] Add sublayerTransform animation
 - [ ] Add instanceBlueOffset animation
-- [ ] Add UI to show current animation properties
+- [x] Add UI to show current animation properties
 - [ ] Add UI to be able to change current animation properties
