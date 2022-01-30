@@ -150,7 +150,7 @@ private extension ViewController {
             startAnimationButton.trailingAnchor.constraint(equalTo: view.readableContentGuide.trailingAnchor),
             startAnimationButton.heightAnchor.constraint(equalToConstant: 48),
 
-            seeCodeButton.bottomAnchor.constraint(equalTo: view.readableContentGuide.bottomAnchor, constant: -30),
+            seeCodeButton.bottomAnchor.constraint(equalTo: view.readableContentGuide.bottomAnchor, constant: -16),
             seeCodeButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             seeCodeButton.leadingAnchor.constraint(equalTo: view.readableContentGuide.leadingAnchor),
             seeCodeButton.trailingAnchor.constraint(equalTo: view.readableContentGuide.trailingAnchor),
